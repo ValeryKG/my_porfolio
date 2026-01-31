@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "apps": "Applications",
+    "basketball": "Basketball",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Production apps. Real problems. Real solutions.",
+    "subtitle": "Built and deployed — not concepts, not mockups. Working applications solving real problems for real users.",
+    "viewApps": "View Applications",
+    "viewBasketball": "Basketball Project"
+  },
+  "apps": {
+    "label": "Production Applications",
+    "title": "What we built",
+    "description": "Three production apps — from idea to deployment. Each solves a real problem, each is live and used.",
+    "linesOfCode": "lines of code",
+    "viewProject": "View Project",
+    "liveDemo": "Live Demo",
+    "requestAccess": "Request Access"
+  },
+  "appDetail": {
+    "back": "← Back to Apps",
+    "problem": "The Problem",
+    "solution": "The Solution",
+    "features": "What It Does",
+    "metrics": "Before vs After",
+    "before": "Before",
+    "after": "After",
+    "architecture": "How It's Built",
+    "tech": "Technology",
+    "stats": "Numbers",
+    "openApp": "Open App",
+    "requestAccess": "Request Access",
+    "builtWith": "Built with AI",
+    "builtWithDesc": "AI-assisted development — architecture and business logic by the developer, syntax and patterns by Claude. Result: production apps in weeks, not months."
+  },
+  "basketball": {
+    "label": "Knowledge System",
+    "title": "Championship Coaching Blueprint",
+    "tagline": "20 years of research. One system.",
+    "what": "What It Is",
+    "unique": "What Makes It Unique",
+    "aiRole": "The AI Role",
+    "categories": "Content",
+    "impact": "Impact",
+    "pages": "guides",
+    "openProject": "Open Project",
+    "different": "This Is Different",
+    "differentDesc": "This is not a software product. This is 20+ years of basketball coaching knowledge — synthesized, organized, and made visual using AI. A knowledge system, not an application."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "close": "Close",
+    "email": "Email",
+    "emailDesc": "Send a message directly",
+    "accessRequest": "Access Request",
+    "accessRequestDesc": "Request demo access to Baiti or TimeClock GPS",
+    "partnership": "Partnership",
+    "partnershipDesc": "Looking for sales partners or collaborators"
+  }
+}
