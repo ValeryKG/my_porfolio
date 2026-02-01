@@ -1,0 +1,193 @@
+export interface Project {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  url: string;
+  accessType: 'public' | 'request';
+  accessNote?: string;
+  tech: string[];
+  stats: { label: string; value: string }[];
+  problem: string;
+  solution: string;
+  features: { title: string; description: string }[];
+  metrics: { label: string; before: string; after: string }[];
+  architecture: string;
+  linesOfCode: number;
+  buildTime: string;
+}
+
+export const apps: Project[] = [
+  {
+    id: 'baiti',
+    name: 'Baiti',
+    tagline: 'Building management done right',
+    description:
+      'Production PWA that replaces WhatsApp chaos for Israeli apartment buildings. Automated payment tracking, multi-language notifications, and professional reporting — all in one place.',
+    url: 'https://baiti.co.il/',
+    accessType: 'request',
+    accessNote: 'Demo building credentials available — contact for access',
+    tech: ['Vanilla JS', 'Firebase Realtime DB', 'Cloud Functions', 'FCM', 'Tailwind CSS', 'PWA'],
+    stats: [
+      { label: 'Lines of Code', value: '22,000' },
+      { label: 'Languages', value: '3' },
+      { label: 'User Roles', value: '3' },
+      { label: 'Cloud Functions', value: '5' },
+      { label: 'Security Rules', value: '449 lines' },
+      { label: 'Build Time', value: '~2 months evenings' },
+    ],
+    problem:
+      'Israeli building committees (Va\'ad Bayit) manage 20–100+ apartments using WhatsApp groups, paper notices, and Excel spreadsheets. Payment collection takes hours. Residents speaking Hebrew, Russian, and English get left behind. Announcements get lost.',
+    solution:
+      'One-click payment tracking, automatic reminders in each resident\'s language, push notifications, PDF reports, and a privacy-tier system that respects everyone\'s preferences.',
+    features: [
+      { title: 'Payment Dashboard', description: 'One-tap toggle per apartment. Visual progress bar. Collection rate jumps from 70% to 90%+.' },
+      { title: 'Automatic Reminders', description: 'System sends reminders 7 days, 1 day, and on due date. Zero effort from manager.' },
+      { title: 'Multi-Language', description: 'Hebrew, English, Russian. Write once — every resident reads in their language. RTL support included.' },
+      { title: 'Special Projects', description: 'Renovations tracked separately from monthly bills. Residents see progress, photos, and payment status.' },
+      { title: 'Privacy Tiers', description: '3 levels of visibility. Buildings choose how much residents see. Manager always has full access.' },
+      { title: 'PDF Reports', description: 'One-click professional reports for building owners, committee meetings, or audits.' },
+    ],
+    metrics: [
+      { label: 'Payment tracking', before: '2–3 hours/month', after: '5 minutes' },
+      { label: 'Sending reminders', before: '1–2 hours', after: 'Automatic' },
+      { label: 'Posting announcements', before: '30 minutes', after: '2 minutes' },
+      { label: 'Generating reports', before: '1 hour', after: '10 seconds' },
+      { label: 'Payment collection rate', before: '70–80%', after: '90–95%' },
+    ],
+    architecture: 'Multi-tenant SaaS. Firebase Realtime Database with role-based security rules (449 lines). 5 Cloud Functions handle notifications and user management server-side. PWA with service worker for offline support. No build step — files served directly via Firebase Hosting.',
+    linesOfCode: 22000,
+    buildTime: '~2 months (evenings only)',
+  },
+  {
+    id: 'timeclock',
+    name: 'TimeClock GPS',
+    tagline: 'Time tracking with real accountability',
+    description:
+      'Enterprise PWA for GPS-verified employee time tracking. Built on trust and transparency — every role sees the same truth. 7 user roles, 5 approval modes, real-time dashboards.',
+    url: 'https://temeclok-gps.web.app/',
+    accessType: 'request',
+    accessNote: 'Manager or observer access available — contact for credentials',
+    tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Tailwind CSS', 'PWA', 'bcrypt'],
+    stats: [
+      { label: 'Lines of Code', value: '18,600' },
+      { label: 'User Roles', value: '7' },
+      { label: 'Approval Modes', value: '5' },
+      { label: 'Languages', value: '4' },
+      { label: 'Components', value: '26' },
+      { label: 'Build Time', value: '~2 weeks evenings' },
+    ],
+    problem:
+      'Employers and employees distrust each other. Workers get cheated on hours. Contractors lie about timelines and staffing. No neutral ground where everyone sees the same data. Paper timesheets are easy to fake.',
+    solution:
+      'GPS-verified clock in/out with an Observer role — a neutral third party who sees everything. Every stakeholder sees the same truth. Trust through transparency, not surveillance.',
+    features: [
+      { title: 'GPS Verification', description: 'Haversine distance calculation. Configurable radius per site. Auto-detects which site based on location.' },
+      { title: '5 Approval Modes', description: 'Auto-approve, GPS-check, hours-range, expected-hours, strict-shifts. Each site configured independently.' },
+      { title: 'Observer Role', description: 'Neutral third party sees all data. Eliminates "he said / she said". Everyone accountable.' },
+      { title: 'Live Status Dashboard', description: 'Real-time view of who\'s on site right now. Updates within 1 second via Firestore listeners.' },
+      { title: 'Device Approval', description: 'PIN + bcrypt hashing. Manager must approve each device. Prevents unauthorized access.' },
+      { title: 'Reports & Export', description: 'PDF and Excel export. Multi-language headers. Filter by site, worker, date range.' },
+    ],
+    metrics: [
+      { label: 'Manager weekly time on timesheets', before: '12 hours', after: '2 hours' },
+      { label: 'Payroll disputes', before: '12/month', after: '<1/month' },
+      { label: 'Timesheet errors', before: '5% of records', after: '<0.1%' },
+      { label: 'Buddy punching', before: 'Undetectable', after: 'Impossible (GPS)' },
+      { label: 'New employee onboarding', before: '30 minutes', after: '5 minutes' },
+    ],
+    architecture: 'React 19 SPA with Context-based state management. Firestore real-time listeners (onSnapshot) across 5 collections. Custom PIN auth with bcrypt — no Firebase Auth used. IndexedDB for device token persistence. PWA with auto-update system via version.json polling. Role-based route protection.',
+    linesOfCode: 18600,
+    buildTime: '~2 weeks (evenings only)',
+  },
+  {
+    id: 'myhours',
+    name: 'MyHours',
+    tagline: 'Your hours. Your proof. Your money.',
+    description:
+      'Personal time tracking PWA for hourly workers and freelancers. GPS-verified, works offline, supports multiple jobs. Free forever — no premium tier, no limits.',
+    url: 'https://myhours-abe10.web.app/',
+    accessType: 'public',
+    tech: ['React 18', 'TypeScript', 'Vite', 'Firebase', 'Tailwind CSS', 'PWA', 'IndexedDB'],
+    stats: [
+      { label: 'Lines of Code', value: '5,700' },
+      { label: 'Languages', value: '4' },
+      { label: 'Custom Hooks', value: '6' },
+      { label: 'Export Formats', value: '2 (PDF, Excel)' },
+      { label: 'Currencies', value: '5' },
+      { label: 'Build Time', value: '<2 weeks evenings' },
+    ],
+    problem:
+      'Hourly workers and freelancers have no proof of hours worked. Employers dispute times. Freelancers with multiple jobs lose track. Existing apps are freemium with annoying limits or English-only.',
+    solution:
+      'GPS-timestamped clock in/out. Multiple workplaces with independent settings. Offline-first so it works anywhere. 100% free, 4 languages, exports to PDF and Excel.',
+    features: [
+      { title: 'GPS Clock In/Out', description: 'One tap. Records exact time and location. Undeniable proof you were there.' },
+      { title: 'Multiple Workplaces', description: '8 settings per job: rate, currency, overtime rules, break duration, time rounding.' },
+      { title: 'Offline First', description: 'IndexedDB queue stores actions locally. Syncs automatically when back online. Never lose data.' },
+      { title: 'Smart Reports', description: 'Automatic earnings calculation. Overtime with multiplier. Time rounding. Filter by week, month, custom range.' },
+      { title: '100% Free', description: 'No freemium. No premium tier. No limits. GPS included. Everything included.' },
+      { title: 'Multi-Language', description: 'English, Hebrew, Arabic, Russian. RTL support. Reports export in your language.' },
+    ],
+    metrics: [
+      { label: 'Weekly hours calculation', before: '15–30 min', after: 'Instant' },
+      { label: 'Creating timesheet', before: '20–30 min', after: '30 seconds' },
+      { label: 'Paycheck verification', before: '30–60 min', after: '5 minutes' },
+      { label: 'Annual wage protection', before: '$0 proof', after: '$600–$2,000+' },
+    ],
+    architecture: 'React 18 SPA. 6 custom hooks encapsulate all data logic (useAuth, useTimeLogs, useWorkPlaces, useGeolocation, usePWA). Firebase Firestore with real-time onSnapshot. IndexedDB for offline action queue with automatic sync. Service worker with cache-first strategy for app shell.',
+    linesOfCode: 5700,
+    buildTime: '<2 weeks (evenings only)',
+  },
+];
+
+export interface BasketballProject {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  url: string;
+  stats: { label: string; value: string }[];
+  what: string;
+  unique: string;
+  aiRole: string;
+  categories: { name: string; pages: number; description: string }[];
+  impact: string[];
+}
+
+export const basketball: BasketballProject = {
+  id: 'basketball',
+  name: 'Championship Coaching Blueprint',
+  tagline: '20 years of research. One system.',
+  description:
+    'The most comprehensive basketball coaching knowledge system on the internet. 20+ years of research across NBA, NCAA, and Euro leagues synthesized into visual, data-backed coaching intelligence.',
+  url: 'https://valerykg.github.io/Basketball-All/',
+  stats: [
+    { label: 'Years of Research', value: '20+' },
+    { label: 'Lines of Content', value: '33,000+' },
+    { label: 'Coaching Guides', value: '15+' },
+    { label: 'Data Sources', value: 'NBA, NCAA, Euro' },
+    { label: 'Chart Visualizations', value: '15+' },
+    { label: 'Interconnected Topics', value: '100+' },
+  ],
+  what: 'A visual knowledge system that synthesizes 20+ years of basketball research — NBA, NCAA, European leagues, published books, coaching articles, and public datasets — into one organized, data-backed resource. Not just "what to do" but "here is WHY, with the data to prove it."',
+  unique:
+    'Nothing like this exists anywhere on the internet. Most coaches — even experienced ones — will never encounter 20% of what\'s documented here through traditional education or coaching clinics. Every recommendation is backed by points-per-possession data, correlation analysis, and real game evidence.',
+  aiRole:
+    'AI made two things possible that would otherwise be impossible: (1) Processing and synthesizing 20 years of scattered web data, books, articles, and datasets into a coherent system. (2) Transforming complex research into visual, easy-to-observe presentations without losing the depth. The knowledge and organization is 20 years of coaching experience. The synthesis and presentation is AI.',
+  categories: [
+    { name: 'Offensive Systems', pages: 3, description: 'Transition offense, pick-and-roll, read-and-react. Complete implementation roadmaps with PPP validation.' },
+    { name: 'Defensive Systems', pages: 3, description: 'Pack-line defense, zone coverage, 8 pick-and-roll coverages ranked by effectiveness (ICE: 0.84 PPP).' },
+    { name: 'Skills Development', pages: 3, description: 'Shooting mechanics, analytics-based shot selection, age-appropriate progressions from youth to college.' },
+    { name: 'Analytics & Strategy', pages: 4, description: 'Pass analysis, shot zone efficiency, strategic correlations. Championship team patterns decoded.' },
+    { name: 'Systems & Templates', pages: 2, description: 'Season-long frameworks, practice structure templates, coaching guides with drill libraries.' },
+  ],
+  impact: [
+    'Changes how you see the game — not opinion, data',
+    'Every "why" answered with points-per-possession evidence',
+    'Cutting = 1.58 PPP vs standing still = 0.87 PPP — and 50 more insights like this',
+    'Championship team patterns: 72% switch-heavy defensive trend explained',
+    'Age-appropriate progressions from youth (8yr) to college',
+    'Saves coaches 100–400 hours of research annually',
+  ],
+};
