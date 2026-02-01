@@ -41,7 +41,7 @@ export default function Basketball({ project }: BasketballProps) {
 
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <p style={{
-            fontSize: '0.7rem',
+            fontSize: '0.85rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
             color: 'var(--color-orange)',
@@ -80,7 +80,7 @@ export default function Basketball({ project }: BasketballProps) {
               background: 'var(--color-orange)',
               color: '#ffffff',
               fontFamily: 'inherit',
-              fontSize: '0.72rem',
+              fontSize: '0.85rem',
               fontWeight: 600,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -116,7 +116,7 @@ export default function Basketball({ project }: BasketballProps) {
               textAlign: 'center',
             }}>
               <p style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-navy)', marginBottom: '4px' }}>{stat.value}</p>
-              <p style={{ fontSize: '0.65rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>{stat.label}</p>
+              <p style={{ fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>{stat.label}</p>
             </div>
           ))}
         </div>
@@ -135,7 +135,7 @@ export default function Basketball({ project }: BasketballProps) {
           <span style={{
             background: 'var(--color-orange)',
             color: '#fff',
-            fontSize: '0.7rem',
+            fontSize: '0.85rem',
             fontWeight: 700,
             padding: '4px 10px',
             borderRadius: '4px',
@@ -145,10 +145,10 @@ export default function Basketball({ project }: BasketballProps) {
             NOTE
           </span>
           <div>
-            <p style={{ fontSize: '0.78rem', fontWeight: 600, color: '#92400e', marginBottom: '4px' }}>
+            <p style={{ fontSize: '0.9rem', fontWeight: 600, color: '#92400e', marginBottom: '4px' }}>
               {t('basketball.different')}
             </p>
-            <p style={{ fontSize: '0.75rem', color: '#78350f', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.88rem', color: '#78350f', lineHeight: 1.6 }}>
               {t('basketball.differentDesc')}
             </p>
           </div>
@@ -157,7 +157,7 @@ export default function Basketball({ project }: BasketballProps) {
         {/* What + Unique */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '64px' }}>
           <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '32px' }}>
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '12px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '12px' }}>
               {t('basketball.what')}
             </p>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', lineHeight: 1.8 }}>
@@ -166,7 +166,7 @@ export default function Basketball({ project }: BasketballProps) {
           </div>
 
           <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '32px' }}>
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '12px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '12px' }}>
               {t('basketball.unique')}
             </p>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', lineHeight: 1.8 }}>
@@ -177,7 +177,7 @@ export default function Basketball({ project }: BasketballProps) {
 
         {/* Categories table */}
         <div style={{ marginBottom: '64px' }}>
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '8px' }}>
+          <p style={{ fontSize: '0.85rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '8px' }}>
             {t('basketball.categories')}
           </p>
           <h3 style={{ fontSize: '1.4rem', fontWeight: 300, color: 'var(--color-navy)', marginBottom: '28px' }}>
@@ -192,9 +192,9 @@ export default function Basketball({ project }: BasketballProps) {
               background: 'var(--color-navy)',
               borderRadius: '8px 8px 0 0',
             }}>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Category</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t('basketball.pages')}</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Topics</span>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Category</span>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t('basketball.pages')}</span>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Topics</span>
             </div>
 
             {project.categories.map((cat, i) => (
@@ -211,7 +211,7 @@ export default function Basketball({ project }: BasketballProps) {
               >
                 <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)' }}>{cat.name}</span>
                 <span style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.88rem',
                   fontWeight: 700,
                   color: 'var(--color-orange)',
                   background: 'var(--color-orange-dim)',
@@ -221,7 +221,7 @@ export default function Basketball({ project }: BasketballProps) {
                 }}>
                   {cat.pages}
                 </span>
-                <span style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>{cat.description}</span>
+                <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>{cat.description}</span>
               </div>
             ))}
           </div>
@@ -239,7 +239,7 @@ export default function Basketball({ project }: BasketballProps) {
             <span style={{
               background: 'var(--color-accent)',
               color: '#fff',
-              fontSize: '0.7rem',
+              fontSize: '0.85rem',
               fontWeight: 700,
               padding: '4px 10px',
               borderRadius: '4px',
@@ -249,7 +249,7 @@ export default function Basketball({ project }: BasketballProps) {
               AI
             </span>
             <div>
-              <p style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '8px' }}>
+              <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '8px' }}>
                 {t('basketball.aiRole')}
               </p>
               <p style={{ fontSize: '0.8rem', color: 'var(--color-text)', lineHeight: 1.8 }}>
@@ -261,7 +261,7 @@ export default function Basketball({ project }: BasketballProps) {
 
         {/* Impact */}
         <div>
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '8px' }}>
+          <p style={{ fontSize: '0.85rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-orange)', fontWeight: 600, marginBottom: '8px' }}>
             {t('basketball.impact')}
           </p>
           <h3 style={{ fontSize: '1.4rem', fontWeight: 300, color: 'var(--color-navy)', marginBottom: '28px' }}>

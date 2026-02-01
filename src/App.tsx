@@ -1,14 +1,27 @@
 import { useState, useEffect } from 'react';
 import { apps, basketball } from './data';
-import Nav from './components/Nav';
-import Hero from './components/Hero';
-import AppsList from './components/AppsList';
-import AppDetail from './components/AppDetail';
-import Basketball from './components/Basketball';
+import { useDeviceContext } from './context/DeviceContext';
+import DeviceToggle from './components/shared/DeviceToggle';
+import Contact from './components/Contact';
+
+// Desktop components
+import DesktopNav from './components/Nav';
+import DesktopHero from './components/Hero';
+import DesktopAppsList from './components/AppsList';
+import DesktopAppDetail from './components/AppDetail';
+import DesktopBasketball from './components/Basketball';
+
+// Mobile components
+import MobileNav from './components/mobile/Nav';
+import MobileHero from './components/mobile/Hero';
+import MobileAppsList from './components/mobile/AppsList';
+import MobileAppDetail from './components/mobile/AppDetail';
+import MobileBasketball from './components/mobile/Basketball';
 
 type View = 'home' | 'apps' | 'app-detail' | 'basketball' | 'contact';
 
 export default function App() {
+  const { isMobile } = useDeviceContext();
   const [view, setView] = useState<View>('home');
   const [selectedApp, setSelectedApp] = useState<string | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
@@ -30,6 +43,13 @@ export default function App() {
 
   const currentApp = apps.find(a => a.id === selectedApp);
 
+  // Select components based on device
+  const Nav = isMobile ? MobileNav : DesktopNav;
+  const Hero = isMobile ? MobileHero : DesktopHero;
+  const AppsList = isMobile ? MobileAppsList : DesktopAppsList;
+  const AppDetail = isMobile ? MobileAppDetail : DesktopAppDetail;
+  const Basketball = isMobile ? MobileBasketball : DesktopBasketball;
+
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg)', color: 'var(--color-text)' }}>
       <Nav currentView={view} onNavigate={navigate} />
@@ -42,7 +62,7 @@ export default function App() {
       )}
 
       {view === 'apps' && (
-        <div style={{ paddingTop: '64px' }}>
+        <div style={{ paddingTop: isMobile ? '56px' : '64px' }}>
           <AppsList apps={apps} onSelect={(id) => navigate(id)} />
         </div>
       )}
@@ -59,56 +79,11 @@ export default function App() {
         <Basketball project={basketball} />
       )}
 
-      {/* Contact Modal */}
-      {contactOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.5)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 200,
-          }}
-          onClick={() => setContactOpen(false)}
-        >
-          <div
-            style={{
-              background: 'var(--color-bg)',
-              borderRadius: '12px',
-              padding: '32px',
-              maxWidth: '400px',
-              width: '90%',
-              border: '1px solid var(--color-border)',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '16px' }}>
-              Contact
-            </h2>
-            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginBottom: '20px' }}>
-              Get in touch via email or LinkedIn.
-            </p>
-            <button
-              onClick={() => setContactOpen(false)}
-              style={{
-                background: 'var(--color-accent)',
-                color: '#fff',
-                border: 'none',
-                padding: '10px 20px',
-                borderRadius: '6px',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                cursor: 'pointer',
-                fontFamily: 'inherit',
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Contact Modal - shared component */}
+      <Contact isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+
+      {/* Device Toggle Button */}
+      <DeviceToggle />
     </div>
   );
 }

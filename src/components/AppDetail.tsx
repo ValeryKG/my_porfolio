@@ -49,7 +49,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
               border: 'none',
               color: 'rgba(255,255,255,0.6)',
               fontFamily: 'inherit',
-              fontSize: '0.78rem',
+              fontSize: '0.9rem',
               cursor: 'pointer',
               marginBottom: '40px',
               padding: 0,
@@ -80,7 +80,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
                   background: 'var(--color-accent)',
                   color: '#ffffff',
                   fontFamily: 'inherit',
-                  fontSize: '0.72rem',
+                  fontSize: '0.85rem',
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -103,7 +103,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
                     color: '#ffffff',
                     border: '1px solid rgba(255,255,255,0.3)',
                     fontFamily: 'inherit',
-                    fontSize: '0.72rem',
+                    fontSize: '0.85rem',
                     fontWeight: 600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
@@ -141,7 +141,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
               textAlign: 'center',
             }}>
               <p style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-navy)', marginBottom: '4px' }}>{stat.value}</p>
-              <p style={{ fontSize: '0.65rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>{stat.label}</p>
+              <p style={{ fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>{stat.label}</p>
             </div>
           ))}
         </div>
@@ -149,13 +149,13 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
         {/* Problem + Solution */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', marginBottom: '64px' }}>
           <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '12px', padding: '32px' }}>
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#dc2626', fontWeight: 600, marginBottom: '12px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#dc2626', fontWeight: 600, marginBottom: '12px' }}>
               {t('appDetail.problem')}
             </p>
             <p style={{ fontSize: '0.88rem', color: '#7f1d1d', lineHeight: 1.7 }}>{app.problem}</p>
           </div>
           <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '32px' }}>
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#16a34a', fontWeight: 600, marginBottom: '12px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#16a34a', fontWeight: 600, marginBottom: '12px' }}>
               {t('appDetail.solution')}
             </p>
             <p style={{ fontSize: '0.88rem', color: '#14532d', lineHeight: 1.7 }}>{app.solution}</p>
@@ -164,7 +164,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
 
         {/* Features */}
         <div style={{ marginBottom: '64px' }}>
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '8px' }}>
+          <p style={{ fontSize: '0.85rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '8px' }}>
             {t('appDetail.features')}
           </p>
           <h3 style={{ fontSize: '1.4rem', fontWeight: 300, color: 'var(--color-navy)', marginBottom: '28px' }}>{app.name}</h3>
@@ -193,7 +193,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.75rem',
+                  fontSize: '0.88rem',
                   fontWeight: 700,
                   flexShrink: 0,
                 }}>
@@ -201,7 +201,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
                 </span>
                 <div>
                   <p style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '4px' }}>{feature.title}</p>
-                  <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>{feature.description}</p>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -210,7 +210,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
 
         {/* Before vs After */}
         <div style={{ marginBottom: '64px' }}>
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '8px' }}>
+          <p style={{ fontSize: '0.85rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '8px' }}>
             {t('appDetail.metrics')}
           </p>
           <h3 style={{ fontSize: '1.4rem', fontWeight: 300, color: 'var(--color-navy)', marginBottom: '28px' }}>
@@ -225,9 +225,9 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
               background: 'var(--color-navy)',
               borderRadius: '8px 8px 0 0',
             }}>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Task</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t('appDetail.before')}</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t('appDetail.after')}</span>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Task</span>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t('appDetail.before')}</span>
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t('appDetail.after')}</span>
             </div>
 
             {app.metrics.map((metric, i) => (
@@ -252,20 +252,20 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
         {/* Architecture + Tech */}
         <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '32px' }}>
           <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '32px' }}>
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '12px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '12px' }}>
               {t('appDetail.architecture')}
             </p>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', lineHeight: 1.8 }}>{app.architecture}</p>
           </div>
 
           <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '32px' }}>
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '16px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '16px' }}>
               {t('appDetail.tech')}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {app.tech.map((tag) => (
                 <span key={tag} style={{
-                  fontSize: '0.72rem',
+                  fontSize: '0.85rem',
                   color: 'var(--color-navy)',
                   background: 'var(--color-accent-light)',
                   border: '1px solid var(--color-accent-dim)',
@@ -294,7 +294,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
           <span style={{
             background: 'var(--color-accent)',
             color: '#fff',
-            fontSize: '0.7rem',
+            fontSize: '0.85rem',
             fontWeight: 700,
             padding: '4px 10px',
             borderRadius: '4px',
@@ -304,10 +304,10 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
             AI
           </span>
           <div>
-            <p style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '4px' }}>
+            <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '4px' }}>
               {t('appDetail.builtWith')}
             </p>
-            <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
               {t('appDetail.builtWithDesc')}
             </p>
           </div>

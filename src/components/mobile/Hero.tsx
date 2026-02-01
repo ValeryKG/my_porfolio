@@ -4,7 +4,7 @@ interface HeroProps {
   onNavigate: (target: string) => void;
 }
 
-export default function Hero({ onNavigate }: HeroProps) {
+export default function MobileHero({ onNavigate }: HeroProps) {
   const { t } = useTranslation();
 
   return (
@@ -14,49 +14,48 @@ export default function Hero({ onNavigate }: HeroProps) {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '100px 24px 60px',
+      padding: '80px 20px 40px',
       background: 'linear-gradient(180deg, var(--color-accent-dim) 0%, var(--color-bg) 60%)',
     }}>
-      <div style={{ maxWidth: '720px', textAlign: 'center' }}>
+      <div style={{ maxWidth: '100%', textAlign: 'center' }}>
 
         {/* Label */}
         <p style={{
           fontSize: '0.85rem',
-          letterSpacing: '0.2em',
+          letterSpacing: '0.15em',
           textTransform: 'uppercase',
           color: 'var(--color-accent)',
           fontWeight: 600,
-          marginBottom: '20px',
+          marginBottom: '16px',
         }}>
-          {'{ ' + 'production apps' + ' }'}
+          {'{ production apps }'}
         </p>
 
         {/* Title */}
         <h1 style={{
-          fontSize: 'clamp(2rem, 5vw, 3.2rem)',
+          fontSize: '2rem',
           fontWeight: 300,
           color: 'var(--color-navy)',
-          lineHeight: 1.2,
-          marginBottom: '24px',
-          letterSpacing: '-0.02em',
+          lineHeight: 1.3,
+          marginBottom: '20px',
+          letterSpacing: '-0.01em',
         }}>
           {t('hero.title')}
         </h1>
 
         {/* Subtitle */}
         <p style={{
-          fontSize: '1rem',
+          fontSize: '1.05rem',
           color: 'var(--color-text-muted)',
           lineHeight: 1.7,
-          marginBottom: '40px',
-          maxWidth: '560px',
-          margin: '0 auto 40px',
+          marginBottom: '32px',
+          padding: '0 8px',
         }}>
           {t('hero.subtitle')}
         </p>
 
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+        {/* Buttons - Stacked on mobile */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '0 16px' }}>
           <button
             onClick={() => onNavigate('apps')}
             style={{
@@ -64,23 +63,14 @@ export default function Hero({ onNavigate }: HeroProps) {
               color: '#ffffff',
               border: 'none',
               fontFamily: 'inherit',
-              fontSize: '0.9rem',
+              fontSize: '0.95rem',
               fontWeight: 600,
-              letterSpacing: '0.1em',
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              padding: '12px 28px',
-              borderRadius: '8px',
+              padding: '16px 28px',
+              borderRadius: '10px',
               cursor: 'pointer',
               boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              (e.target as HTMLButtonElement).style.background = 'var(--color-accent-hover)';
-              (e.target as HTMLButtonElement).style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              (e.target as HTMLButtonElement).style.background = 'var(--color-accent)';
-              (e.target as HTMLButtonElement).style.transform = 'translateY(0)';
             }}
           >
             {t('hero.viewApps')}
@@ -91,46 +81,37 @@ export default function Hero({ onNavigate }: HeroProps) {
             style={{
               background: 'var(--color-bg)',
               color: 'var(--color-navy)',
-              border: '1px solid var(--color-border)',
+              border: '2px solid var(--color-border)',
               fontFamily: 'inherit',
-              fontSize: '0.9rem',
+              fontSize: '0.95rem',
               fontWeight: 600,
-              letterSpacing: '0.1em',
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              padding: '12px 28px',
-              borderRadius: '8px',
+              padding: '14px 28px',
+              borderRadius: '10px',
               cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              (e.target as HTMLButtonElement).style.borderColor = 'var(--color-accent)';
-              (e.target as HTMLButtonElement).style.color = 'var(--color-accent)';
-            }}
-            onMouseLeave={(e) => {
-              (e.target as HTMLButtonElement).style.borderColor = 'var(--color-border)';
-              (e.target as HTMLButtonElement).style.color = 'var(--color-navy)';
             }}
           >
             {t('hero.viewBasketball')}
           </button>
         </div>
 
-        {/* Stats row */}
+        {/* Stats - horizontal scroll on mobile */}
         <div style={{
           display: 'flex',
-          gap: '48px',
+          gap: '24px',
           justifyContent: 'center',
-          marginTop: '72px',
+          marginTop: '48px',
           flexWrap: 'wrap',
         }}>
           {[
             { value: '4', label: 'Projects' },
-            { value: '64K+', label: 'Lines of Code' },
-            { value: '3', label: 'Production Apps' },
+            { value: '64K+', label: 'Lines' },
+            { value: '3', label: 'Live Apps' },
           ].map((stat) => (
-            <div key={stat.label} style={{ textAlign: 'center' }}>
+            <div key={stat.label} style={{ textAlign: 'center', minWidth: '80px' }}>
               <p style={{
-                fontSize: '1.8rem',
+                fontSize: '2rem',
                 fontWeight: 700,
                 color: 'var(--color-navy)',
                 marginBottom: '4px',
@@ -138,8 +119,8 @@ export default function Hero({ onNavigate }: HeroProps) {
                 {stat.value}
               </p>
               <p style={{
-                fontSize: '0.85rem',
-                letterSpacing: '0.1em',
+                fontSize: '0.8rem',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: 'var(--color-text-muted)',
               }}>

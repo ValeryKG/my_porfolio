@@ -1,34 +1,32 @@
 import { useTranslation } from 'react-i18next';
-import type { Project } from '../data';
+import type { Project } from '../../data';
 
 interface AppsListProps {
   apps: Project[];
   onSelect: (id: string) => void;
 }
 
-export default function AppsList({ apps, onSelect }: AppsListProps) {
+export default function MobileAppsList({ apps, onSelect }: AppsListProps) {
   const { t } = useTranslation();
 
+  const accentColors = ['var(--color-accent)', 'var(--color-green)', 'var(--color-orange)'];
+
   return (
-    <div style={{
-      maxWidth: '1100px',
-      margin: '0 auto',
-      padding: '80px 24px',
-    }}>
+    <div style={{ padding: '40px 16px 60px' }}>
       {/* Section Header */}
-      <div style={{ marginBottom: '56px' }}>
+      <div style={{ marginBottom: '32px' }}>
         <p style={{
           fontSize: '0.85rem',
-          letterSpacing: '0.2em',
+          letterSpacing: '0.15em',
           textTransform: 'uppercase',
           color: 'var(--color-accent)',
           fontWeight: 600,
-          marginBottom: '12px',
+          marginBottom: '10px',
         }}>
           {t('apps.label')}
         </p>
         <h2 style={{
-          fontSize: '2rem',
+          fontSize: '1.8rem',
           fontWeight: 300,
           color: 'var(--color-navy)',
           marginBottom: '12px',
@@ -37,20 +35,15 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
         </h2>
         <p style={{
           color: 'var(--color-text-muted)',
-          fontSize: '0.9rem',
-          maxWidth: '520px',
+          fontSize: '1rem',
           lineHeight: 1.6,
         }}>
           {t('apps.description')}
         </p>
       </div>
 
-      {/* App Cards */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-        gap: '24px',
-      }}>
+      {/* App Cards - Single column on mobile */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {apps.map((app, index) => (
           <div
             key={app.id}
@@ -58,58 +51,41 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
             style={{
               background: 'var(--color-bg)',
               border: '1px solid var(--color-border)',
-              borderRadius: '12px',
-              padding: '32px',
+              borderRadius: '16px',
+              padding: '24px',
               cursor: 'pointer',
-              transition: 'all 0.25s',
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
               position: 'relative',
               overflow: 'hidden',
-            }}
-            onMouseEnter={(e) => {
-              const card = e.currentTarget;
-              card.style.borderColor = 'var(--color-accent)';
-              card.style.boxShadow = '0 8px 24px var(--color-shadow-hover)';
-              card.style.transform = 'translateY(-3px)';
-            }}
-            onMouseLeave={(e) => {
-              const card = e.currentTarget;
-              card.style.borderColor = 'var(--color-border)';
-              card.style.boxShadow = 'none';
-              card.style.transform = 'translateY(0)';
+              boxShadow: '0 2px 8px var(--color-shadow)',
             }}
           >
             {/* Top accent line */}
             <div style={{
               position: 'absolute',
               top: 0, left: 0, right: 0,
-              height: '3px',
-              background: index === 0
-                ? 'var(--color-accent)'
-                : index === 1
-                  ? 'var(--color-green)'
-                  : 'var(--color-orange)',
+              height: '4px',
+              background: accentColors[index] || accentColors[0],
             }} />
 
-            {/* Number + Name */}
+            {/* Header row */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{
                 fontSize: '0.85rem',
                 color: 'var(--color-text-muted)',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
+                fontWeight: 600,
               }}>
                 {String(index + 1).padStart(2, '0')}
               </span>
               <span style={{
-                fontSize: '0.9rem',
-                letterSpacing: '0.1em',
+                fontSize: '0.8rem',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: app.accessType === 'public' ? 'var(--color-green)' : 'var(--color-text-muted)',
                 background: app.accessType === 'public' ? 'var(--color-green-dim)' : 'var(--color-bg-alt)',
-                padding: '3px 10px',
+                padding: '6px 14px',
                 borderRadius: '20px',
                 fontWeight: 600,
               }}>
@@ -120,7 +96,7 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
             {/* Title + Tagline */}
             <div>
               <h3 style={{
-                fontSize: '1.3rem',
+                fontSize: '1.4rem',
                 fontWeight: 600,
                 color: 'var(--color-navy)',
                 marginBottom: '6px',
@@ -128,7 +104,7 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
                 {app.name}
               </h3>
               <p style={{
-                fontSize: '0.9rem',
+                fontSize: '0.95rem',
                 color: 'var(--color-text-muted)',
                 fontStyle: 'italic',
               }}>
@@ -141,47 +117,52 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
               fontSize: '0.95rem',
               color: 'var(--color-text-muted)',
               lineHeight: 1.6,
-              flex: 1,
             }}>
               {app.description}
             </p>
 
-            {/* Tech tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              {app.tech.slice(0, 4).map((tag) => (
+            {/* Tech tags - scrollable row */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '8px',
+            }}>
+              {app.tech.slice(0, 3).map((tag) => (
                 <span key={tag} style={{
-                  fontSize: '0.9rem',
-                  letterSpacing: '0.05em',
+                  fontSize: '0.8rem',
                   color: 'var(--color-text-muted)',
                   background: 'var(--color-bg-alt)',
                   border: '1px solid var(--color-border)',
-                  padding: '3px 8px',
-                  borderRadius: '4px',
+                  padding: '6px 12px',
+                  borderRadius: '6px',
                 }}>
                   {tag}
                 </span>
               ))}
-              {app.tech.length > 4 && (
+              {app.tech.length > 3 && (
                 <span style={{
-                  fontSize: '0.9rem',
+                  fontSize: '0.8rem',
                   color: 'var(--color-text-muted)',
-                  padding: '3px 4px',
+                  padding: '6px 8px',
                 }}>
-                  +{app.tech.length - 4}
+                  +{app.tech.length - 3}
                 </span>
               )}
             </div>
 
-            {/* Lines of code */}
-            <p style={{
+            {/* Footer */}
+            <div style={{
               fontSize: '0.85rem',
               color: 'var(--color-text-muted)',
               borderTop: '1px solid var(--color-border)',
-              paddingTop: '12px',
-              marginTop: '4px',
+              paddingTop: '16px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}>
-              {app.linesOfCode.toLocaleString()} {t('apps.linesOfCode')} · {app.buildTime}
-            </p>
+              <span>{app.linesOfCode.toLocaleString()} {t('apps.linesOfCode')}</span>
+              <span style={{ color: accentColors[index], fontWeight: 600 }}>View →</span>
+            </div>
           </div>
         ))}
       </div>
