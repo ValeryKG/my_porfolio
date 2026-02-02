@@ -6,7 +6,7 @@ interface NavProps {
 }
 
 export default function Nav({ currentView, onNavigate }: NavProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <nav style={{
@@ -97,38 +97,6 @@ export default function Nav({ currentView, onNavigate }: NavProps) {
             </button>
           ))}
 
-          {/* Language Switcher */}
-          <div style={{
-            display: 'flex',
-            gap: '2px',
-            background: 'var(--color-bg-alt)',
-            borderRadius: '6px',
-            padding: '3px',
-            border: '1px solid var(--color-border)',
-          }}>
-            {['en', 'he'].map((lang) => (
-              <button
-                key={lang}
-                onClick={() => i18n.changeLanguage(lang)}
-                style={{
-                  background: i18n.language === lang ? 'var(--color-accent)' : 'transparent',
-                  color: i18n.language === lang ? '#ffffff' : 'var(--color-text-muted)',
-                  border: 'none',
-                  fontFamily: 'inherit',
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.05em',
-                  padding: '4px 10px',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  textTransform: 'uppercase',
-                }}
-              >
-                {lang}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </nav>

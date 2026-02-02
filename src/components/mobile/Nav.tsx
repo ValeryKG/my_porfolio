@@ -7,7 +7,7 @@ interface NavProps {
 }
 
 export default function MobileNav({ currentView, onNavigate }: NavProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNavigate = (target: string) => {
@@ -151,44 +151,6 @@ export default function MobileNav({ currentView, onNavigate }: NavProps) {
             </button>
           ))}
 
-          {/* Language Switcher */}
-          <div style={{
-            marginTop: 'auto',
-            paddingTop: '24px',
-            borderTop: '1px solid var(--color-border)',
-          }}>
-            <p style={{
-              fontSize: '0.85rem',
-              color: 'var(--color-text-muted)',
-              marginBottom: '12px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-            }}>
-              Language
-            </p>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              {['en', 'he'].map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => i18n.changeLanguage(lang)}
-                  style={{
-                    background: i18n.language === lang ? 'var(--color-accent)' : 'var(--color-bg-alt)',
-                    color: i18n.language === lang ? '#ffffff' : 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                    fontFamily: 'inherit',
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    padding: '12px 24px',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {lang}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       )}
     </>
