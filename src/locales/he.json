@@ -52,11 +52,15 @@
   "contact": {
     "title": "צור קשר",
     "close": "סגור",
-    "email": "אמיל",
-    "emailDesc": "שלח הודעה ישירה",
-    "accessRequest": "בקשת גישה",
-    "accessRequestDesc": "בקש גישה לדמו של Baiti אbyli TimeClock GPS",
-    "partnership": "שותפות",
-    "partnershipDesc": "מחפש שותפים למכירות אibili שוטפים"
+    "email": "שלח אימייל",
+    "emailDesc": "פניות כלליות והזדמנויות",
+    "demoAccess": "בקש גישה להדגמה",
+    "demoAccessDesc": "נסה את TimeClock GPS או Baiti",
+    "github": "צפה בקוד שלי",
+    "githubDesc": "עיין בפרויקטים ורפוזיטוריות",
+    "phone": "התקשר אליי",
+    "phoneDesc": "שיחה טלפונית ישירה",
+    "whatsapp": "וואטסאפ",
+    "whatsappDesc": "הודעה ישירה"
   }
 }

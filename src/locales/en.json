@@ -52,11 +52,15 @@
   "contact": {
     "title": "Get in Touch",
     "close": "Close",
-    "email": "Email",
-    "emailDesc": "Send a message directly",
-    "accessRequest": "Access Request",
-    "accessRequestDesc": "Request demo access to Baiti or TimeClock GPS",
-    "partnership": "Partnership",
-    "partnershipDesc": "Looking for sales partners or collaborators"
+    "email": "Email Me",
+    "emailDesc": "General inquiries and opportunities",
+    "demoAccess": "Request Demo",
+    "demoAccessDesc": "Try TimeClock GPS or Baiti",
+    "github": "View My Code",
+    "githubDesc": "Browse projects and repositories",
+    "phone": "Call Me",
+    "phoneDesc": "Direct phone call",
+    "whatsapp": "WhatsApp",
+    "whatsappDesc": "Direct message (Israel)"
   }
 }

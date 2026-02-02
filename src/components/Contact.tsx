@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface ContactProps {
@@ -7,38 +8,15 @@ interface ContactProps {
 
 export default function Contact({ isOpen, onClose }: ContactProps) {
   const { t } = useTranslation();
+  const [copied, setCopied] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const options = [
-    {
-      href: 'mailto:valery.kg@gmail.com',
-      icon: '✉',
-      iconBg: 'var(--color-accent-dim)',
-      iconColor: 'var(--color-accent)',
-      hoverBorder: 'var(--color-accent)',
-      titleKey: 'contact.email',
-      descKey: 'contact.emailDesc',
-    },
-    {
-      href: 'mailto:valery.kg@gmail.com?subject=Access%20Request',
-      icon: '🔑',
-      iconBg: 'var(--color-green-dim)',
-      iconColor: 'var(--color-green)',
-      hoverBorder: 'var(--color-green)',
-      titleKey: 'contact.accessRequest',
-      descKey: 'contact.accessRequestDesc',
-    },
-    {
-      href: 'mailto:valery.kg@gmail.com?subject=Partnership',
-      icon: '🤝',
-      iconBg: 'var(--color-orange-dim)',
-      iconColor: 'var(--color-orange)',
-      hoverBorder: 'var(--color-orange)',
-      titleKey: 'contact.partnership',
-      descKey: 'contact.partnershipDesc',
-    },
-  ];
+  const copyToClipboard = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 2000);
+  };
 
   return (
     <>
@@ -99,47 +77,199 @@ export default function Contact({ isOpen, onClose }: ContactProps) {
 
         {/* Options */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {options.map((option) => (
-            <a
-              key={option.titleKey}
-              href={option.href}
+
+          {/* Email - with copy */}
+          <div
+            style={{
+              background: 'var(--color-bg-alt)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '10px',
+              padding: '20px 24px',
+              display: 'flex',
+              gap: '16px',
+              alignItems: 'center',
+            }}
+          >
+            <span style={{
+              background: 'var(--color-accent-dim)',
+              color: 'var(--color-accent)',
+              width: '40px',
+              height: '40px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1rem',
+              flexShrink: 0,
+            }}>
+              ✉
+            </span>
+            <div style={{ flex: 1 }}>
+              <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '2px' }}>
+                {t('contact.email')}
+              </p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                valerynz@hotmail.com
+              </p>
+            </div>
+            <button
+              onClick={() => copyToClipboard('valerynz@hotmail.com', 'email')}
               style={{
-                background: 'var(--color-bg-alt)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '10px',
-                padding: '20px 24px',
-                textDecoration: 'none',
-                display: 'flex',
-                gap: '16px',
-                alignItems: 'center',
+                background: copied === 'email' ? 'var(--color-green)' : 'var(--color-accent)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                padding: '8px 14px',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                minWidth: '70px',
               }}
-              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = option.hoverBorder; }}
-              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--color-border)'; }}
             >
-              <span style={{
-                background: option.iconBg,
-                color: option.iconColor,
-                width: '40px',
-                height: '40px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1rem',
-                flexShrink: 0,
-              }}>
-                {option.icon}
-              </span>
-              <div>
-                <p style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '2px' }}>
-                  {t(option.titleKey)}
-                </p>
-                <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-                  {t(option.descKey)}
-                </p>
-              </div>
-            </a>
-          ))}
+              {copied === 'email' ? '✓' : 'Copy'}
+            </button>
+          </div>
+
+          {/* Phone - with copy */}
+          <div
+            style={{
+              background: 'var(--color-bg-alt)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '10px',
+              padding: '20px 24px',
+              display: 'flex',
+              gap: '16px',
+              alignItems: 'center',
+            }}
+          >
+            <span style={{
+              background: 'var(--color-green-dim)',
+              color: 'var(--color-green)',
+              width: '40px',
+              height: '40px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1rem',
+              flexShrink: 0,
+            }}>
+              📱
+            </span>
+            <div style={{ flex: 1 }}>
+              <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '2px' }}>
+                {t('contact.phone')}
+              </p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                +972 54-332-8803
+              </p>
+            </div>
+            <button
+              onClick={() => copyToClipboard('+972543328803', 'phone')}
+              style={{
+                background: copied === 'phone' ? 'var(--color-green)' : 'var(--color-accent)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px',
+                padding: '8px 14px',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                minWidth: '70px',
+              }}
+            >
+              {copied === 'phone' ? '✓' : 'Copy'}
+            </button>
+          </div>
+
+          {/* WhatsApp - external link */}
+          <a
+            href="https://wa.me/972543328803"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: 'var(--color-bg-alt)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '10px',
+              padding: '20px 24px',
+              textDecoration: 'none',
+              display: 'flex',
+              gap: '16px',
+              alignItems: 'center',
+            }}
+            onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--color-orange)'; }}
+            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--color-border)'; }}
+          >
+            <span style={{
+              background: 'var(--color-orange-dim)',
+              color: 'var(--color-orange)',
+              width: '40px',
+              height: '40px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1rem',
+              flexShrink: 0,
+            }}>
+              💬
+            </span>
+            <div style={{ flex: 1 }}>
+              <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '2px' }}>
+                {t('contact.whatsapp')}
+              </p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                {t('contact.whatsappDesc')}
+              </p>
+            </div>
+            <span style={{ color: 'var(--color-text-muted)', fontSize: '1.2rem' }}>→</span>
+          </a>
+
+          {/* GitHub - external link */}
+          <a
+            href="https://github.com/ValeryKG"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: 'var(--color-bg-alt)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '10px',
+              padding: '20px 24px',
+              textDecoration: 'none',
+              display: 'flex',
+              gap: '16px',
+              alignItems: 'center',
+            }}
+            onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--color-purple)'; }}
+            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--color-border)'; }}
+          >
+            <span style={{
+              background: 'var(--color-purple-dim)',
+              color: 'var(--color-purple)',
+              width: '40px',
+              height: '40px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1rem',
+              flexShrink: 0,
+            }}>
+              💻
+            </span>
+            <div style={{ flex: 1 }}>
+              <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '2px' }}>
+                {t('contact.github')}
+              </p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                github.com/ValeryKG
+              </p>
+            </div>
+            <span style={{ color: 'var(--color-text-muted)', fontSize: '1.2rem' }}>→</span>
+          </a>
+
         </div>
       </div>
     </>
