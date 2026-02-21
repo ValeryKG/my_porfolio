@@ -113,7 +113,7 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
                 borderRadius: '20px',
                 fontWeight: 600,
               }}>
-                {app.accessType === 'public' ? 'Live' : 'Demo'}
+                {app.accessType === 'public' ? 'Live' : 'Live — Private'}
               </span>
             </div>
 

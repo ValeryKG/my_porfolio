@@ -26,7 +26,7 @@ export const apps: Project[] = [
       'Production PWA that replaces WhatsApp chaos for Israeli apartment buildings. Automated payment tracking, multi-language notifications, and professional reporting — all in one place.',
     url: 'https://baiti.co.il/',
     accessType: 'request',
-    accessNote: 'Demo building credentials available — contact for access',
+    accessNote: 'Production app serving real buildings — contact for access credentials',
     tech: ['Vanilla JS', 'Firebase Realtime DB', 'Cloud Functions', 'FCM', 'Tailwind CSS', 'PWA'],
     stats: [
       { label: 'Lines of Code', value: '22,000' },
@@ -67,7 +67,7 @@ export const apps: Project[] = [
       'Enterprise PWA for GPS-verified employee time tracking. Built on trust and transparency — every role sees the same truth. 7 user roles, 5 approval modes, real-time dashboards.',
     url: 'https://temeclok-gps.web.app/',
     accessType: 'request',
-    accessNote: 'Manager or observer access available — contact for credentials',
+    accessNote: 'Live app in active use — contact for access credentials',
     tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Tailwind CSS', 'PWA', 'bcrypt'],
     stats: [
       { label: 'Lines of Code', value: '18,600' },
@@ -99,6 +99,47 @@ export const apps: Project[] = [
     architecture: 'React 19 SPA with Context-based state management. Firestore real-time listeners (onSnapshot) across 5 collections. Custom PIN auth with bcrypt — no Firebase Auth used. IndexedDB for device token persistence. PWA with auto-update system via version.json polling. Role-based route protection.',
     linesOfCode: 18600,
     buildTime: '~2 weeks (evenings only)',
+  },
+  {
+    id: 'basketball-portal',
+    name: 'Basketball Portal',
+    tagline: 'One platform. Every role in the gym.',
+    description:
+      'Multi-tenant SaaS for basketball clubs. Managers run their organization, coaches evaluate players and build skill curricula, players track development and complete practice sessions — all in one role-aware platform backed by a global skills library.',
+    url: 'https://basketball-c169a.web.app',
+    accessType: 'public',
+    accessNote: 'Coaches and players can register directly. Manager accounts require an invite link — contact to request one.',
+    tech: ['React 18', 'TypeScript', 'Vite', 'Firebase Firestore', 'Firebase Auth', 'Tailwind CSS v4'],
+    stats: [
+      { label: 'Lines of Code', value: '~14,000' },
+      { label: 'User Roles', value: '4' },
+      { label: 'Firestore Collections', value: '8+' },
+      { label: 'Security Rule Lines', value: '200+' },
+      { label: 'Components', value: '35+' },
+      { label: 'Build Time', value: '~6 weeks evenings' },
+    ],
+    problem:
+      'Basketball clubs manage player development through WhatsApp groups, paper evaluation sheets, and scattered spreadsheets. Coaches have no structured way to track skill progress. Players don\'t know what to work on. Managers have no visibility across their organization. Everyone reinvents the wheel every season.',
+    solution:
+      'A role-based platform where every participant gets their own tailored workspace. Managers control the org, coaches build and share skill curricula, players track sessions and view evaluations — all connected through shared Firestore data with strict role-based security.',
+    features: [
+      { title: 'Role-Based Dashboards', description: 'Admin, Manager, Coach, Player — each role sees exactly what they need. Protected routes, Firestore security rules, and separate data paths enforce isolation.' },
+      { title: 'Named Skill Lists', description: 'Coaches create curated skill lists, import them from any PDF or document, and share directly to specific players or the entire team in one click.' },
+      { title: 'Practice Sessions', description: 'Coaches assign structured sessions to individual players or whole teams. Players complete and track sessions. Coaches see history and completion status.' },
+      { title: 'Player Evaluations', description: 'Coaches evaluate players on selected skills with notes. Players view their full evaluation history and can focus on their prioritized skills.' },
+      { title: 'Org Skill Library', description: 'Admins maintain a global library of 1000+ skills with PPP values, impact ratings, age relevance, and teachability. Managers curate which skills their coaches can access.' },
+      { title: 'Community & Sharing', description: 'Coaches and managers publish skill lists to a shared community. Any user can browse, preview, and import published lists into their own workspace.' },
+    ],
+    metrics: [
+      { label: 'Sharing a skill curriculum', before: 'PDF in WhatsApp group', after: 'One-click share to players' },
+      { label: 'Building a practice plan', before: '2–3 hours of research', after: 'Import from any document' },
+      { label: 'Evaluating players', before: 'Paper form → lost', after: 'Digital with full history' },
+      { label: 'Inviting a co-manager', before: 'Manual account setup', after: 'Invite link in 2 clicks' },
+      { label: 'Onboarding a new coach', before: 'Manual data entry', after: 'Email invite → instant access' },
+    ],
+    architecture: 'Multi-tenant SaaS with dual-org model — every coach holds a personal workspace (personalOrgId) and optionally joins a club org (orgId), keeping private and club work fully separated. Firestore subcollections per org enforce data isolation. Skill lists shareable across roles via users/{uid}/skillLists and organizations/{orgId}/skillLists. PDF/document parsing pipeline extracts skill names directly into lists. React 18 + TypeScript, deployed on Firebase Hosting.',
+    linesOfCode: 14000,
+    buildTime: '~6 weeks (evenings only)',
   },
   {
     id: 'myhours',

@@ -13,10 +13,10 @@
   "apps": {
     "label": "Production Applications",
     "title": "What we built",
-    "description": "Three production apps — from idea to deployment. Each solves a real problem, each is live and used.",
+    "description": "Four production apps — from idea to deployment. Each solves a real problem, each is live and used.",
     "linesOfCode": "lines of code",
     "viewProject": "View Project",
-    "liveDemo": "Live Demo",
+    "liveDemo": "Live",
     "requestAccess": "Request Access"
   },
   "appDetail": {
@@ -54,8 +54,8 @@
     "close": "Close",
     "email": "Email Me",
     "emailDesc": "General inquiries and opportunities",
-    "demoAccess": "Request Demo",
-    "demoAccessDesc": "Try TimeClock GPS or Baiti",
+    "demoAccess": "Request Access",
+    "demoAccessDesc": "Get access to any of the live apps",
     "github": "View My Code",
     "githubDesc": "Browse projects and repositories",
     "phone": "Call Me",

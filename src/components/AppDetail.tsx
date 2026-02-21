@@ -117,7 +117,30 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
                   {t('appDetail.requestAccess')}
                 </button>
               )}
+              {app.accessNote && app.accessType === 'public' && (
+                <button
+                  onClick={onContact}
+                  style={{
+                    background: 'transparent',
+                    color: 'rgba(255,255,255,0.75)',
+                    border: '1px solid rgba(255,255,255,0.25)',
+                    fontFamily: 'inherit',
+                    fontSize: '0.8rem',
+                    fontWeight: 500,
+                    padding: '8px 18px',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Request Manager Access
+                </button>
+              )}
             </div>
+            {app.accessNote && (
+              <p style={{ marginTop: '12px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.55)' }}>
+                {app.accessNote}
+              </p>
+            )}
           </div>
         </div>
       </div>
