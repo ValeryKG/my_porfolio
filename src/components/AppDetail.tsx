@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { Project } from '../data';
+import ScreenshotCarousel from './shared/ScreenshotCarousel';
 
 interface AppDetailProps {
   app: Project;
@@ -147,6 +148,11 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
 
       {/* Main Content */}
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '60px 24px 80px' }}>
+
+        {/* Screenshot Carousel */}
+        {app.screenshots && app.screenshots.length > 0 && (
+          <ScreenshotCarousel key={app.id} screenshots={app.screenshots} />
+        )}
 
         {/* Stats */}
         <div style={{

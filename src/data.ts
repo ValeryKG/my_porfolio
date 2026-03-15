@@ -15,6 +15,7 @@ export interface Project {
   architecture: string;
   linesOfCode: number;
   buildTime: string;
+  screenshots?: { file: string; caption: string }[];
 }
 
 export const apps: Project[] = [
@@ -58,6 +59,11 @@ export const apps: Project[] = [
     architecture: 'Multi-tenant SaaS. Firebase Realtime Database with role-based security rules (449 lines). 5 Cloud Functions handle notifications and user management server-side. PWA with service worker for offline support. No build step — files served directly via Firebase Hosting.',
     linesOfCode: 22000,
     buildTime: '~2 months (evenings only)',
+    screenshots: [
+      { file: '/baiti_resident_tutorial.jpg', caption: 'Hebrew, English, Russian — residents use the app in their own language' },
+      { file: '/baiti_building_budget.jpg', caption: 'Building budget tracking with income, expenses, and live balance' },
+      { file: '/baiti_user_guides.jpg', caption: 'Built-in guides for every role — no support calls needed' },
+    ],
   },
   {
     id: 'timeclock',
@@ -99,6 +105,11 @@ export const apps: Project[] = [
     architecture: 'React 19 SPA with Context-based state management. Firestore real-time listeners (onSnapshot) across 5 collections. Custom PIN auth with bcrypt — no Firebase Auth used. IndexedDB for device token persistence. PWA with auto-update system via version.json polling. Role-based route protection.',
     linesOfCode: 18600,
     buildTime: '~2 weeks (evenings only)',
+    screenshots: [
+      { file: '/gps_PIN_screen.jpg', caption: 'Secure PIN entry — 4 languages, works on any device' },
+      { file: '/gps_manager_live_status.jpg', caption: 'Manager sees who is clocked in right now, in real time' },
+      { file: '/gps_site_config.jpg', caption: 'Per-site GPS radius configuration — precise location enforcement' },
+    ],
   },
   {
     id: 'basketball-portal',
@@ -140,6 +151,11 @@ export const apps: Project[] = [
     architecture: 'Multi-tenant SaaS with dual-org model — every coach holds a personal workspace (personalOrgId) and optionally joins a club org (orgId), keeping private and club work fully separated. Firestore subcollections per org enforce data isolation. scoutingHistory subcollection stores timestamped skill snapshots with private/public note split. Skill lists shared via writeBatch across users/{uid}/skillLists and organizations/{orgId}/skillLists. 176-skill/drill global library with PPP/impact/teachability metadata and isDrill filter. PDF parsing pipeline extracts skill names into named lists. 3-tier resource sharing (org / personal / community) with soft ban (bannedFromSharing) and hard ban (accountDisabled) enforced at auth layer. Schedule with Firestore event CRUD, RSVP, venue docs, and template system. PWA with manifest, icons, and apple-touch-icon. Recharts-powered progress tracking across all 3 dashboards. Legal pages (/terms + /privacy) with required consent stored in user doc. React 18 + TypeScript + Vite, deployed on Firebase Hosting.',
     linesOfCode: 20000,
     buildTime: '~6 weeks (evenings only)',
+    screenshots: [
+      { file: '/courtIq_a.jpg', caption: 'Player dashboard — assigned workouts, progress tracking, scouting reports' },
+      { file: '/courtIq_b.jpg', caption: 'Session view — defensive skill list with coach observation logging' },
+      { file: '/courtIq_c.jpg', caption: '176 skills and drills — filtered by category, age group, and impact' },
+    ],
   },
   {
     id: 'myhours',
@@ -179,6 +195,11 @@ export const apps: Project[] = [
     architecture: 'React 18 SPA. 6 custom hooks encapsulate all data logic (useAuth, useTimeLogs, useWorkPlaces, useGeolocation, usePWA). Firebase Firestore with real-time onSnapshot. IndexedDB for offline action queue with automatic sync. Service worker with cache-first strategy for app shell.',
     linesOfCode: 5700,
     buildTime: '<2 weeks (evenings only)',
+    screenshots: [
+      { file: '/myHours_a.jpg', caption: 'GPS timestamps prove where and when you worked — free, 4 languages' },
+      { file: '/myHours_b.jpg', caption: 'Time logs across multiple workplaces with full history' },
+      { file: '/myHours_c.jpg', caption: 'Monthly earnings summary with PDF and Excel export' },
+    ],
   },
 ];
 

@@ -125,7 +125,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         }}>
           {[
             { value: '4', label: 'Projects' },
-            { value: '64K+', label: 'Lines of Code' },
+            { value: '80K+', label: 'Lines of Code' },
             { value: '3', label: 'Production Apps' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>

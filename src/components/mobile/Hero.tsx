@@ -106,7 +106,7 @@ export default function MobileHero({ onNavigate }: HeroProps) {
         }}>
           {[
             { value: '4', label: 'Projects' },
-            { value: '64K+', label: 'Lines' },
+            { value: '80K+', label: 'Lines' },
             { value: '3', label: 'Live Apps' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center', minWidth: '80px' }}>
