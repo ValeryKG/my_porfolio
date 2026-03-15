@@ -217,6 +217,50 @@ export default function Contact({ isOpen, onClose }: ContactProps) {
             <span style={{ color: 'var(--color-text-muted)', fontSize: '1rem', flexShrink: 0 }}>→</span>
           </a>
 
+          {/* CV Downloads */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+            <a
+              href="/Valery_Lavrov_CV.pdf"
+              download
+              style={{
+                background: 'var(--color-bg-alt)',
+                border: '1px solid var(--color-border)',
+                borderRadius: '10px',
+                padding: '12px 14px',
+                textDecoration: 'none',
+                display: 'flex',
+                gap: '8px',
+                alignItems: 'center',
+              }}
+            >
+              <span style={{ background: 'var(--color-accent-dim)', color: 'var(--color-accent)', width: '28px', height: '28px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 }}>↓</span>
+              <div style={{ minWidth: 0 }}>
+                <p style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', margin: 0 }}>CV — PDF</p>
+                <p style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', margin: 0 }}>Download</p>
+              </div>
+            </a>
+            <a
+              href="/Valery_Lavrov_CV.docx"
+              download
+              style={{
+                background: 'var(--color-bg-alt)',
+                border: '1px solid var(--color-border)',
+                borderRadius: '10px',
+                padding: '12px 14px',
+                textDecoration: 'none',
+                display: 'flex',
+                gap: '8px',
+                alignItems: 'center',
+              }}
+            >
+              <span style={{ background: 'var(--color-accent-dim)', color: 'var(--color-accent)', width: '28px', height: '28px', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', flexShrink: 0 }}>↓</span>
+              <div style={{ minWidth: 0 }}>
+                <p style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-navy)', margin: 0 }}>CV — Word</p>
+                <p style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', margin: 0 }}>Download</p>
+              </div>
+            </a>
+          </div>
+
           {/* GitHub - external link */}
           <a
             href="https://github.com/ValeryKG"

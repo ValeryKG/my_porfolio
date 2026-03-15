@@ -106,7 +106,7 @@ export const apps: Project[] = [
     tagline: 'One platform. Every role in the gym.',
     description:
       'Multi-tenant SaaS PWA for basketball clubs. Managers run their org, coaches assess players and build skill curricula, players track development and complete practice sessions — all in one role-aware platform backed by a 176-skill library, live scouting history, progress charts, a full schedule calendar, and community resource sharing.',
-    url: 'https://basketball-c169a.web.app',
+    url: 'https://court-iq.org/',
     accessType: 'public',
     accessNote: 'Coaches and players can register directly. Manager accounts require an invite link — contact to request one.',
     tech: ['React 18', 'TypeScript', 'Vite', 'Firebase Firestore', 'Firebase Auth', 'Tailwind CSS v4'],
@@ -205,10 +205,10 @@ export const basketball: BasketballProject = {
   url: 'https://valerykg.github.io/Basketball-All/',
   stats: [
     { label: 'Years of Research', value: '20+' },
-    { label: 'Lines of Content', value: '33,000+' },
-    { label: 'Coaching Guides', value: '15+' },
+    { label: 'Lines of Content', value: '40,000+' },
+    { label: 'Coaching Guides', value: '20+' },
     { label: 'Data Sources', value: 'NBA, NCAA, Euro' },
-    { label: 'Chart Visualizations', value: '15+' },
+    { label: 'Chart Visualizations', value: '20+' },
     { label: 'Interconnected Topics', value: '100+' },
   ],
   what: 'A visual knowledge system that synthesizes 20+ years of basketball research — NBA, NCAA, European leagues, published books, coaching articles, and public datasets — into one organized, data-backed resource. Not just "what to do" but "here is WHY, with the data to prove it."',
@@ -217,11 +217,13 @@ export const basketball: BasketballProject = {
   aiRole:
     'AI made two things possible that would otherwise be impossible: (1) Processing and synthesizing 20 years of scattered web data, books, articles, and datasets into a coherent system. (2) Transforming complex research into visual, easy-to-observe presentations without losing the depth. The knowledge and organization is 20 years of coaching experience. The synthesis and presentation is AI.',
   categories: [
-    { name: 'Offensive Systems', pages: 3, description: 'Transition offense, pick-and-roll, read-and-react. Complete implementation roadmaps with PPP validation.' },
+    { name: 'Offensive Systems', pages: 3, description: 'Transition offense, pick-and-roll, offensive performance. Complete implementation roadmaps with PPP validation.' },
     { name: 'Defensive Systems', pages: 3, description: 'Pack-line defense, zone coverage, 8 pick-and-roll coverages ranked by effectiveness (ICE: 0.84 PPP).' },
-    { name: 'Skills Development', pages: 3, description: 'Shooting mechanics, analytics-based shot selection, age-appropriate progressions from youth to college.' },
-    { name: 'Analytics & Strategy', pages: 4, description: 'Pass analysis, shot zone efficiency, strategic correlations. Championship team patterns decoded.' },
-    { name: 'Systems & Templates', pages: 2, description: 'Season-long frameworks, practice structure templates, coaching guides with drill libraries.' },
+    { name: 'Skills Development', pages: 3, description: 'Shooting mechanics, analytics-based shot selection, coaching blueprint with age-appropriate progressions.' },
+    { name: 'Analysis & Strategy', pages: 3, description: 'Pass analysis, shot zone efficiency, strategic correlations. Championship team patterns decoded.' },
+    { name: 'Basketball Systems', pages: 3, description: 'Data-driven 2025 system, deep correlations & strategic insights, read-and-react offense framework.' },
+    { name: 'Player Development', pages: 2, description: 'Rebounding (offense & defense) and inside finishing moves with data-backed progressions.' },
+    { name: 'Coaching Playbooks', pages: 2, description: 'Step-by-step implementation guides for Pack Line Defense and 1-2-2 Press systems.' },
   ],
   impact: [
     'Changes how you see the game — not opinion, data',
