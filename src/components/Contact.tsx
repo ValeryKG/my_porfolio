@@ -261,6 +261,43 @@ export default function Contact({ isOpen, onClose }: ContactProps) {
             </a>
           </div>
 
+          {/* LinkedIn - external link */}
+          <a
+            href="https://www.linkedin.com/in/valery-lavrov/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: 'var(--color-bg-alt)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '10px',
+              padding: '14px 16px',
+              textDecoration: 'none',
+              display: 'flex',
+              gap: '12px',
+              alignItems: 'center',
+            }}
+          >
+            <span style={{
+              background: 'rgba(10, 102, 194, 0.1)',
+              color: '#0a66c2',
+              width: '32px',
+              height: '32px',
+              borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.85rem',
+              flexShrink: 0,
+            }}>
+              in
+            </span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '1px' }}>LinkedIn</p>
+              <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>linkedin.com/in/valery-lavrov</p>
+            </div>
+            <span style={{ color: 'var(--color-text-muted)', fontSize: '1rem', flexShrink: 0 }}>→</span>
+          </a>
+
           {/* GitHub - external link */}
           <a
             href="https://github.com/ValeryKG"
