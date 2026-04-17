@@ -28,7 +28,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           fontWeight: 600,
           marginBottom: '20px',
         }}>
-          {'{ ' + 'production apps' + ' }'}
+          {'{ independent product developer }'}
         </p>
 
         {/* Title */}
@@ -124,9 +124,9 @@ export default function Hero({ onNavigate }: HeroProps) {
           flexWrap: 'wrap',
         }}>
           {[
-            { value: '4', label: 'Projects' },
-            { value: '80K+', label: 'Lines of Code' },
-            { value: '3', label: 'Production Apps' },
+            { value: '31 days', label: 'Largest app, evenings only' },
+            { value: '6 days', label: 'Latest app, production on day 6' },
+            { value: '23 docs', label: 'Compounding knowledge system' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
               <p style={{

@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 // Desktop components
 import DesktopNav from './components/Nav';
 import DesktopHero from './components/Hero';
+import DesktopSystemSection from './components/SystemSection';
 import DesktopAppsList from './components/AppsList';
 import DesktopAppDetail from './components/AppDetail';
 import DesktopBasketball from './components/Basketball';
@@ -14,6 +15,7 @@ import DesktopBasketball from './components/Basketball';
 // Mobile components
 import MobileNav from './components/mobile/Nav';
 import MobileHero from './components/mobile/Hero';
+import MobileSystemSection from './components/mobile/SystemSection';
 import MobileAppsList from './components/mobile/AppsList';
 import MobileAppDetail from './components/mobile/AppDetail';
 import MobileBasketball from './components/mobile/Basketball';
@@ -46,6 +48,7 @@ export default function App() {
   // Select components based on device
   const Nav = isMobile ? MobileNav : DesktopNav;
   const Hero = isMobile ? MobileHero : DesktopHero;
+  const SystemSection = isMobile ? MobileSystemSection : DesktopSystemSection;
   const AppsList = isMobile ? MobileAppsList : DesktopAppsList;
   const AppDetail = isMobile ? MobileAppDetail : DesktopAppDetail;
   const Basketball = isMobile ? MobileBasketball : DesktopBasketball;
@@ -57,6 +60,7 @@ export default function App() {
       {view === 'home' && (
         <>
           <Hero onNavigate={navigate} />
+          <SystemSection />
           <AppsList apps={apps} onSelect={(id) => navigate(id)} />
         </>
       )}

@@ -71,7 +71,7 @@ export default function MobileAppsList({ apps, onSelect }: AppsListProps) {
             }} />
 
             {/* Header row */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
               <span style={{
                 fontSize: '0.85rem',
                 color: 'var(--color-text-muted)',
@@ -79,18 +79,34 @@ export default function MobileAppsList({ apps, onSelect }: AppsListProps) {
               }}>
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span style={{
-                fontSize: '0.8rem',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: app.accessType === 'public' ? 'var(--color-green)' : 'var(--color-text-muted)',
-                background: app.accessType === 'public' ? 'var(--color-green-dim)' : 'var(--color-bg-alt)',
-                padding: '6px 14px',
-                borderRadius: '20px',
-                fontWeight: 600,
-              }}>
-                {app.accessType === 'public' ? 'Live' : 'Live — Private'}
-              </span>
+              <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                {app.status === 'live-mvp' && (
+                  <span style={{
+                    fontSize: '0.72rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-orange)',
+                    background: 'rgba(249, 115, 22, 0.1)',
+                    padding: '4px 10px',
+                    borderRadius: '20px',
+                    fontWeight: 600,
+                  }}>
+                    Live MVP
+                  </span>
+                )}
+                <span style={{
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: app.accessType === 'public' ? 'var(--color-green)' : 'var(--color-text-muted)',
+                  background: app.accessType === 'public' ? 'var(--color-green-dim)' : 'var(--color-bg-alt)',
+                  padding: '6px 14px',
+                  borderRadius: '20px',
+                  fontWeight: 600,
+                }}>
+                  {app.accessType === 'public' ? 'Live' : 'Live — Private'}
+                </span>
+              </div>
             </div>
 
             {/* Title + Tagline */}

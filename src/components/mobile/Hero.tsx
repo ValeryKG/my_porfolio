@@ -28,7 +28,7 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           fontWeight: 600,
           marginBottom: '16px',
         }}>
-          {'{ production apps }'}
+          {'{ independent product developer }'}
         </p>
 
         {/* Title */}
@@ -105,9 +105,9 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           flexWrap: 'wrap',
         }}>
           {[
-            { value: '4', label: 'Projects' },
-            { value: '80K+', label: 'Lines' },
-            { value: '3', label: 'Live Apps' },
+            { value: '31 days', label: 'Largest app' },
+            { value: '6 days', label: 'Latest app' },
+            { value: '23 docs', label: 'Methodology' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center', minWidth: '80px' }}>
               <p style={{

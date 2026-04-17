@@ -5,15 +5,15 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Production apps. Real problems. Real solutions.",
-    "subtitle": "Built and deployed — not concepts, not mockups. Working applications solving real problems for real users.",
+    "title": "18,600 lines. 7 user roles. 5 GPS modes. 31 days.",
+    "subtitle": "One person. A system that compounds. Four markets most developers can't serve.",
     "viewApps": "View Applications",
     "viewBasketball": "Basketball Project"
   },
   "apps": {
     "label": "Production Applications",
-    "title": "What we built",
-    "description": "Four production apps — from idea to deployment. Each solves a real problem, each is live and used.",
+    "title": "What was built",
+    "description": "Each app built solo — from decision tree to deployment. Serving Hebrew, Russian, Arabic, and English-speaking markets.",
     "linesOfCode": "lines of code",
     "viewProject": "View Project",
     "liveDemo": "Live",

@@ -15,10 +15,58 @@ export interface Project {
   architecture: string;
   linesOfCode: number;
   buildTime: string;
+  status: 'production' | 'live-mvp' | 'in-development';
   screenshots?: { file: string; caption: string }[];
 }
 
 export const apps: Project[] = [
+  {
+    id: 'timeclock',
+    name: 'TimeClock GPS',
+    tagline: 'Time tracking with real accountability',
+    description:
+      'Enterprise PWA for GPS-verified employee time tracking. Built on trust and transparency — every role sees the same truth. 7 user roles, 5 approval modes, real-time dashboards.',
+    url: 'https://temeclok-gps.web.app/',
+    accessType: 'request',
+    accessNote: 'Live app in active use — contact for access credentials',
+    status: 'production',
+    tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Tailwind CSS', 'PWA', 'bcrypt'],
+    stats: [
+      { label: 'Lines of Code', value: '18,600' },
+      { label: 'User Roles', value: '7' },
+      { label: 'Approval Modes', value: '5' },
+      { label: 'Languages', value: '4' },
+      { label: 'Components', value: '26' },
+      { label: 'Build Time', value: '31 days evenings' },
+    ],
+    problem:
+      'Employers and employees distrust each other. Workers get cheated on hours. Contractors lie about timelines and staffing. No neutral ground where everyone sees the same data. Paper timesheets are easy to fake.',
+    solution:
+      'GPS-verified clock in/out with an Observer role — a neutral third party who sees everything. Every stakeholder sees the same truth. Trust through transparency, not surveillance.',
+    features: [
+      { title: 'GPS Verification', description: 'Haversine distance calculation. Configurable radius per site. Auto-detects which site based on location.' },
+      { title: '5 Approval Modes', description: 'Auto-approve, GPS-check, hours-range, expected-hours, strict-shifts. Each site configured independently.' },
+      { title: 'Observer Role', description: 'Neutral third party sees all data. Eliminates "he said / she said". Everyone accountable.' },
+      { title: 'Live Status Dashboard', description: 'Real-time view of who\'s on site right now. Updates within 1 second via Firestore listeners.' },
+      { title: 'Device Approval', description: 'PIN + bcrypt hashing. Manager must approve each device. Prevents unauthorized access.' },
+      { title: 'Reports & Export', description: 'PDF and Excel export. Multi-language headers. Filter by site, worker, date range.' },
+    ],
+    metrics: [
+      { label: 'Manager weekly time on timesheets', before: '12 hours', after: '2 hours' },
+      { label: 'Payroll disputes', before: '12/month', after: '<1/month' },
+      { label: 'Timesheet errors', before: '5% of records', after: '<0.1%' },
+      { label: 'Buddy punching', before: 'Undetectable', after: 'Impossible (GPS)' },
+      { label: 'New employee onboarding', before: '30 minutes', after: '5 minutes' },
+    ],
+    architecture: 'React 19 SPA with Context-based state management. Firestore real-time listeners (onSnapshot) across 5 collections. Custom PIN auth with bcrypt — no Firebase Auth used. IndexedDB for device token persistence. PWA with auto-update system via version.json polling. Role-based route protection.',
+    linesOfCode: 18600,
+    buildTime: '31 days (evenings only)',
+    screenshots: [
+      { file: '/gps_PIN_screen.jpg', caption: 'Secure PIN entry — 4 languages, works on any device' },
+      { file: '/gps_manager_live_status.jpg', caption: 'Manager sees who is clocked in right now, in real time' },
+      { file: '/gps_site_config.jpg', caption: 'Per-site GPS radius configuration — precise location enforcement' },
+    ],
+  },
   {
     id: 'baiti',
     name: 'Baiti',
@@ -28,6 +76,7 @@ export const apps: Project[] = [
     url: 'https://baiti.co.il/',
     accessType: 'request',
     accessNote: 'Production app serving real buildings — contact for access credentials',
+    status: 'production',
     tech: ['Vanilla JS', 'Firebase Realtime DB', 'Cloud Functions', 'FCM', 'Tailwind CSS', 'PWA'],
     stats: [
       { label: 'Lines of Code', value: '22,000' },
@@ -66,52 +115,6 @@ export const apps: Project[] = [
     ],
   },
   {
-    id: 'timeclock',
-    name: 'TimeClock GPS',
-    tagline: 'Time tracking with real accountability',
-    description:
-      'Enterprise PWA for GPS-verified employee time tracking. Built on trust and transparency — every role sees the same truth. 7 user roles, 5 approval modes, real-time dashboards.',
-    url: 'https://temeclok-gps.web.app/',
-    accessType: 'request',
-    accessNote: 'Live app in active use — contact for access credentials',
-    tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Tailwind CSS', 'PWA', 'bcrypt'],
-    stats: [
-      { label: 'Lines of Code', value: '18,600' },
-      { label: 'User Roles', value: '7' },
-      { label: 'Approval Modes', value: '5' },
-      { label: 'Languages', value: '4' },
-      { label: 'Components', value: '26' },
-      { label: 'Build Time', value: '~2 weeks evenings' },
-    ],
-    problem:
-      'Employers and employees distrust each other. Workers get cheated on hours. Contractors lie about timelines and staffing. No neutral ground where everyone sees the same data. Paper timesheets are easy to fake.',
-    solution:
-      'GPS-verified clock in/out with an Observer role — a neutral third party who sees everything. Every stakeholder sees the same truth. Trust through transparency, not surveillance.',
-    features: [
-      { title: 'GPS Verification', description: 'Haversine distance calculation. Configurable radius per site. Auto-detects which site based on location.' },
-      { title: '5 Approval Modes', description: 'Auto-approve, GPS-check, hours-range, expected-hours, strict-shifts. Each site configured independently.' },
-      { title: 'Observer Role', description: 'Neutral third party sees all data. Eliminates "he said / she said". Everyone accountable.' },
-      { title: 'Live Status Dashboard', description: 'Real-time view of who\'s on site right now. Updates within 1 second via Firestore listeners.' },
-      { title: 'Device Approval', description: 'PIN + bcrypt hashing. Manager must approve each device. Prevents unauthorized access.' },
-      { title: 'Reports & Export', description: 'PDF and Excel export. Multi-language headers. Filter by site, worker, date range.' },
-    ],
-    metrics: [
-      { label: 'Manager weekly time on timesheets', before: '12 hours', after: '2 hours' },
-      { label: 'Payroll disputes', before: '12/month', after: '<1/month' },
-      { label: 'Timesheet errors', before: '5% of records', after: '<0.1%' },
-      { label: 'Buddy punching', before: 'Undetectable', after: 'Impossible (GPS)' },
-      { label: 'New employee onboarding', before: '30 minutes', after: '5 minutes' },
-    ],
-    architecture: 'React 19 SPA with Context-based state management. Firestore real-time listeners (onSnapshot) across 5 collections. Custom PIN auth with bcrypt — no Firebase Auth used. IndexedDB for device token persistence. PWA with auto-update system via version.json polling. Role-based route protection.',
-    linesOfCode: 18600,
-    buildTime: '~2 weeks (evenings only)',
-    screenshots: [
-      { file: '/gps_PIN_screen.jpg', caption: 'Secure PIN entry — 4 languages, works on any device' },
-      { file: '/gps_manager_live_status.jpg', caption: 'Manager sees who is clocked in right now, in real time' },
-      { file: '/gps_site_config.jpg', caption: 'Per-site GPS radius configuration — precise location enforcement' },
-    ],
-  },
-  {
     id: 'basketball-portal',
     name: 'Basketball Player Development',
     tagline: 'One platform. Every role in the gym.',
@@ -120,6 +123,7 @@ export const apps: Project[] = [
     url: 'https://court-iq.org/',
     accessType: 'public',
     accessNote: 'Coaches and players can register directly. Manager accounts require an invite link — contact to request one.',
+    status: 'live-mvp',
     tech: ['React 18', 'TypeScript', 'Vite', 'Firebase Firestore', 'Firebase Auth', 'Tailwind CSS v4'],
     stats: [
       { label: 'Lines of Code', value: '~20,000' },
@@ -165,6 +169,7 @@ export const apps: Project[] = [
       'Personal time tracking PWA for hourly workers and freelancers. GPS-verified, works offline, supports multiple jobs. Free forever — no premium tier, no limits.',
     url: 'https://myhours-abe10.web.app/',
     accessType: 'public',
+    status: 'production',
     tech: ['React 18', 'TypeScript', 'Vite', 'Firebase', 'Tailwind CSS', 'PWA', 'IndexedDB'],
     stats: [
       { label: 'Lines of Code', value: '5,700' },
