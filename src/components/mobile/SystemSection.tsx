@@ -13,7 +13,7 @@ export default function MobileSystemSection() {
     {
       number: '03',
       title: 'Failures that become rules',
-      body: 'When HomeBase exposed two PWA install prompt edge cases, those bugs updated the shared guide library. The next app starts with those lessons already encoded. Six projects in — the system knows more than any single project does.',
+      body: 'When WishBasket exposed two PWA install prompt edge cases, those bugs updated the shared guide library. The next app starts with those lessons already encoded. Six projects in — the system knows more than any single project does.',
     },
   ];
 

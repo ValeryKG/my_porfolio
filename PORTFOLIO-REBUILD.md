@@ -126,8 +126,10 @@ StockPilot entry must include:
 HomeBase entry must include:
 - The PWA install prompt one-shot bug as a hard problem solved
 - The folder-level ACL without query complexity solution
-- Build time: 6 days (first commit to production use)
-- Status: Live, invite-only, real family use
+- Build time: ~2 weeks (evenings only) — confirmed from source
+- Status: Production, public, real family in active use
+- Request & Promise: ANY family member can promise — not admin only. Peer accountability, not approval flow.
+- Read HOMEBASE-CURRENT-STATE.md in the homebase project before writing any copy.
 
 **For Basketball Blueprint — reframe it**
 Current framing: "a website about coaching"
