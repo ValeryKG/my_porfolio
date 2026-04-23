@@ -10,7 +10,20 @@
 
 Planning docs describe intent. Source files describe reality. An app in production for months has drifted from its spec — features added, features changed, things never built. Writing portfolio copy from the spec produces entries that are wrong, generic, or miss what's actually unique.
 
+**Specs are written at the start of a project and are never updated after that. They describe what was planned, not what was built.**
+
 **Always read the actual source files first. Then write.**
+
+---
+
+## CROSS-PROJECT KNOWLEDGE BASE
+
+There is a shared internal knowledge base used across all projects. Read it when you need context on architecture decisions, recurring patterns, or cross-project lessons that aren't in the source code.
+
+**Name:** _cross-project knowledge base
+**URL:** https://inventory-e5daa.web.app/
+
+This is not a spec and not a portfolio doc. It is a living reference updated as projects evolve. When source code alone doesn't explain a decision — check here first before asking the user.
 
 ---
 
