@@ -23,7 +23,7 @@ export const apps: Project[] = [
   {
     id: 'timeclock',
     name: 'TimeClock GPS',
-    tagline: 'Time tracking with real accountability',
+    tagline: 'GPS-verified time tracking for teams where spreadsheets get argued with',
     description:
       'Enterprise PWA for GPS-verified employee time tracking. Built on trust and transparency — every role sees the same truth. 7 user roles, 5 approval modes, real-time dashboards.',
     url: 'https://temeclok-gps.web.app/',
@@ -127,10 +127,11 @@ export const apps: Project[] = [
     status: 'production',
     tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Firebase Auth', 'Firebase Storage', 'Recharts', 'jsPDF', 'xlsx', 'dnd-kit', 'Zustand', 'PWA'],
     stats: [
-      { label: 'Lines of Code', value: '~8,400' },
+      { label: 'Lines of Code', value: '~8,600' },
       { label: 'User Roles', value: '4' },
       { label: 'Item Types', value: '2 (consumable + asset)' },
       { label: 'Audit Log', value: 'Immutable — rule-enforced' },
+      { label: 'Active Users', value: '4' },
       { label: 'Real Items Tracked', value: '189+' },
       { label: 'Build Time', value: '~3 weeks evenings' },
     ],
@@ -155,7 +156,7 @@ export const apps: Project[] = [
       { label: 'Onboarding new team member', before: 'Full access or nothing', after: 'Assign specific folders only' },
     ],
     architecture: 'React 19 SPA. Firestore with onSnapshot real-time listeners across 4 collections. writeBatch for atomic stock updates — quantity change and immutable log entry written together or not at all. Firestore security rules enforce: (1) logs are append-only, update/delete blocked; (2) every document scoped to orgId, enforced server-side. Folder visibility filtered once at the folder tree via allowedFolders[] on the user doc — no per-item permission checks as inventory scales. Google OAuth + email/password via Firebase Auth. Zustand for auth state. jsPDF + jspdf-autotable for PDF, xlsx for Excel. dnd-kit for folder drag-and-drop. PWA with auto-update via version.json polling.',
-    linesOfCode: 8400,
+    linesOfCode: 8600,
     buildTime: '~3 weeks (evenings only)',
     screenshots: [
       { file: '/inventory_b.png', caption: 'Folder tree — real org structure at Palo Alto Networks, nested by location with item counts' },

@@ -15,6 +15,11 @@ export default function SystemSection() {
       title: 'Failures that become rules',
       body: 'When WishBasket exposed two PWA install prompt edge cases, those bugs updated the shared guide library. The next app starts with those lessons already encoded. Six projects in — the system knows more than any single project does.',
     },
+    {
+      number: '04',
+      title: 'Builds that stay maintainable',
+      body: 'Most codebases become expensive to change after 6 months. Every decision here is documented — what the problem was, what was tried, what was chosen and why. A year later, opening any project takes minutes not days. The context was never lost because it was never only in someone\'s head.',
+    },
   ];
 
   return (
@@ -47,7 +52,7 @@ export default function SystemSection() {
       {/* Cards */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateColumns: 'repeat(4, 1fr)',
         gap: '24px',
       }}>
         {cards.map((card) => (
