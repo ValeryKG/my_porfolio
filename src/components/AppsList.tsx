@@ -122,13 +122,13 @@ export default function AppsList({ apps, onSelect }: AppsListProps) {
                   fontSize: '0.9rem',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: app.accessType === 'public' ? 'var(--color-green)' : 'var(--color-text-muted)',
-                  background: app.accessType === 'public' ? 'var(--color-green-dim)' : 'var(--color-bg-alt)',
+                  color: 'var(--color-green)',
+                  background: 'var(--color-green-dim)',
                   padding: '3px 10px',
                   borderRadius: '20px',
                   fontWeight: 600,
                 }}>
-                  {app.accessType === 'public' ? 'Live' : 'Live — Private'}
+                  Live
                 </span>
               </div>
             </div>

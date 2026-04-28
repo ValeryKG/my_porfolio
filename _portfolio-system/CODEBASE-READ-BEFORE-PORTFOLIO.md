@@ -40,17 +40,21 @@ Any time you are:
 
 ## STEP 1 — FIND THE CURRENT STATE FILE
 
-Each app project should have a `[APPNAME]-CURRENT-STATE.md` in its root.
-This is the pre-read source of truth, updated from actual source files.
+Each app project has a `CURRENT-STATE.md` in its root (fixed name, always in root).
+This is the primary source of truth for what is actually built right now.
 
 Check for it first:
 ```
-Read: [project-root]/[APPNAME]-CURRENT-STATE.md
+Read: [project-root]/CURRENT-STATE.md
 ```
 
 **If it exists:** use it as the starting point. Still spot-check key claims against source.
 
-**If it doesn't exist:** run Step 2 to generate it. Save it for next time.
+**If it doesn't exist:** run Step 2 to generate it, then write it.
+Follow the format and rules in doc `03-PROJECT-CURRENT-STATE.md` in the cross-project knowledge base:
+```
+C:\Users\Valery\Documents\_cross-project knowledge base\03-PROJECT-CURRENT-STATE.md
+```
 
 ---
 
@@ -116,7 +120,10 @@ Common drift patterns:
 
 ## STEP 4 — WRITE THE CURRENT STATE FILE
 
-Save a `[APPNAME]-CURRENT-STATE.md` in the project root with:
+Save a `CURRENT-STATE.md` in the project root (fixed name, always root-level).
+Follow the format in `03-PROJECT-CURRENT-STATE.md` in the cross-project knowledge base.
+
+Template:
 
 ```markdown
 # [AppName] — Current State

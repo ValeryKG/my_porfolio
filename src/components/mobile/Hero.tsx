@@ -107,7 +107,7 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           {[
             { value: '31 days', label: 'Largest app' },
             { value: '6 days', label: 'Latest app' },
-            { value: '24 docs', label: 'Methodology' },
+            { value: '35 docs', label: 'Methodology' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center', minWidth: '80px' }}>
               <p style={{

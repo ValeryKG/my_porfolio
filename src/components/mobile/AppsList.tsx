@@ -98,13 +98,13 @@ export default function MobileAppsList({ apps, onSelect }: AppsListProps) {
                   fontSize: '0.8rem',
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
-                  color: app.accessType === 'public' ? 'var(--color-green)' : 'var(--color-text-muted)',
-                  background: app.accessType === 'public' ? 'var(--color-green-dim)' : 'var(--color-bg-alt)',
+                  color: 'var(--color-green)',
+                  background: 'var(--color-green-dim)',
                   padding: '6px 14px',
                   borderRadius: '20px',
                   fontWeight: 600,
                 }}>
-                  {app.accessType === 'public' ? 'Live' : 'Live — Private'}
+                  Live
                 </span>
               </div>
             </div>

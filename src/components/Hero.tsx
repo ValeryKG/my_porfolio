@@ -126,7 +126,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           {[
             { value: '31 days', label: 'Largest app, evenings only' },
             { value: '6 days', label: 'Latest app, production on day 6' },
-            { value: '24 docs', label: 'Compounding knowledge system' },
+            { value: '35 docs', label: 'Compounding knowledge system' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
               <p style={{
