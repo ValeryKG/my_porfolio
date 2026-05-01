@@ -160,8 +160,8 @@ export const apps: Project[] = [
     screenshots: [
       { file: '/inventory_b.png', caption: 'Folder tree — real org structure at Palo Alto Networks, nested by location with item counts' },
       { file: '/inventory_f.png', caption: 'Stock update modal — current quantity, delta or exact, monthly consumption chart, and reorder suggestion in one screen' },
-      { file: '/inventory_d.png', caption: 'Global search — 189 items across all folders, filterable by type, with images and serial numbers' },
-      { file: '/inventory_e.png', caption: 'Edit item form — consumable vs asset type selector with conditional fields, low-stock threshold, image upload' },
+      { file: '/inventory_j.png', caption: 'Item list — real inventory in production use, asset photos, status badges, and last-updated timestamps' },
+      { file: '/inventory_g.png', caption: 'Ticket system — 31 maintenance issues tracked by status: open, in progress, escalated, resolved' },
     ],
   },
   {
