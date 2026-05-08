@@ -28,7 +28,7 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           fontWeight: 600,
           marginBottom: '16px',
         }}>
-          {'{ independent product developer }'}
+          {'{ independent developer }'}
         </p>
 
         {/* Title */}
@@ -96,6 +96,30 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           </button>
         </div>
 
+        {/* CoachIQ callout */}
+        <div
+          onClick={() => onNavigate('apps')}
+          style={{
+            marginTop: '20px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '10px',
+            padding: '12px 16px',
+            background: 'rgba(245, 158, 11, 0.06)',
+            border: '1px solid rgba(245, 158, 11, 0.25)',
+            borderRadius: '12px',
+            cursor: 'pointer',
+            textAlign: 'left',
+            margin: '20px 16px 0',
+          }}
+        >
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block', flexShrink: 0, marginTop: '5px' }} />
+          <span style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
+            {'Now building: '}<strong style={{ color: 'var(--color-navy)' }}>CoachIQ</strong>{' — AI coaching with memory. Early testers, coaches, and partners welcome. '}
+            <span style={{ color: '#f59e0b', fontWeight: 600 }}>Learn more →</span>
+          </span>
+        </div>
+
         {/* Stats - horizontal scroll on mobile */}
         <div style={{
           display: 'flex',
@@ -107,7 +131,7 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           {[
             { value: '31 days', label: 'Largest app' },
             { value: '6 days', label: 'Latest app' },
-            { value: '35 docs', label: 'Methodology' },
+            { value: '40 docs', label: 'Methodology' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center', minWidth: '80px' }}>
               <p style={{

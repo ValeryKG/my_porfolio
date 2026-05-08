@@ -21,6 +21,49 @@ export interface Project {
 
 export const apps: Project[] = [
   {
+    id: 'coachiq',
+    name: 'CoachIQ',
+    tagline: 'A basketball AI coach that knows this specific player — reads their history, speaks their language, and gets smarter every session',
+    description:
+      'CoachIQ is a conversational AI coaching agent built on a proprietary basketball knowledge base and real player data. Every response is grounded in 20 years of professional methodology indexed in Pinecone — not scraped from the internet. Before responding, the agent reads the player\'s actual session history, drill records, and profile from Firestore. It tracks what was recommended, evaluates how it went, and adjusts. The agent speaks any language the player uses. The knowledge base does not.',
+    url: 'https://coach-iq.org/',
+    accessType: 'request',
+    accessNote: 'In active development — reach out to participate in early testing, coaching, or as a partner',
+    status: 'in-development',
+    tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Auth', 'Firestore', 'Cloud Functions v2', 'Pinecone', 'Anthropic Claude Sonnet 4.6', 'RAG', 'PWA'],
+    stats: [
+      { label: 'AI Model', value: 'Claude Sonnet 4.6' },
+      { label: 'Vector DB', value: 'Pinecone 1024d — Frankfurt' },
+      { label: 'KB Files', value: '29 structured — 3 content types' },
+      { label: 'Architecture', value: 'RAG + Memory + Profile injection' },
+      { label: 'Languages', value: 'Any — AI speaks the player\'s language' },
+      { label: 'Knowledge source', value: '20 years of professional methodology' },
+    ],
+    problem:
+      'Generic AI chatbots know basketball in general. They give the same answer to every player. They forget what was said last session. They have no idea what a specific player worked on, what felt hard, or what their actual development history looks like. Any chatbot can answer a basketball question — none of them coach a specific person.',
+    solution:
+      'Before every response, the agent reads the player\'s real data from Firestore: profile, recent drills, feel ratings, assessment history. It retrieves relevant methodology from a proprietary knowledge base — professional content indexed by semantic meaning, not keywords. It responds in the player\'s language. After each session, it updates the player\'s record. The next session it knows more. This is a coaching relationship that compounds.',
+    features: [
+      { title: 'RAG Pipeline on Professional Methodology', description: 'Every question triggers a semantic search of 29 KB files across skill development, defensive systems, transition offense, analytics, and coaching methodology — sourced from 20 years of professional research. Pinecone retrieves by meaning. Claude responds from what it finds, not from the internet.' },
+      { title: 'Profile Injection Before Every Response', description: 'buildProfileContext(uid) assembles the player\'s name, age, level, position, goal, and recent drill history from Firestore before each request — injected above the system prompt so Claude reads it first. The agent knows who it\'s talking to before it reads the question.' },
+      { title: 'Drill Tracking and Evaluation', description: 'When the agent recommends a drill it writes to users/{uid}/drills/ silently — the player never sees a form. When they report back, the agent evaluates their feel and writes claudeAssessment to the same record. Every recommendation is closed-loop.' },
+      { title: 'Structured JSON Output Enabling Side Effects', description: 'The agent returns { answer, drill?, feel?, drill_assessment? } — not plain text. The Cloud Function parses this and writes to Firestore independently of what the player sees. The player gets a coaching response; the system gets a structured record. Both happen in one call.' },
+      { title: 'Three-Tier Knowledge Base', description: 'KB content has three types: standard (one concept, self-contained), concept-block (complete system delivered in full — pack line defense, Read and React offense), and sequence (skill development sequences where the agent delivers one step at a time and waits for the player\'s report before continuing).' },
+      { title: 'Conversation Memory — Session + Profile', description: 'Last 8 messages pass as the Claude messages array so context carries across a session. Profile and drill history carry across all sessions. The agent never asks for information it already has.' },
+      { title: 'Multilingual by Architecture', description: 'The knowledge base is English only. The embedding model (llama-text-embed-v2) is multilingual — a Hebrew or Russian question retrieves the right English content. Claude responds in the player\'s language from their profile. One knowledge base, any language.' },
+    ],
+    metrics: [
+      { label: 'Source of coaching answers', before: 'Internet scraping — unverified', after: 'Verified professional methodology only' },
+      { label: 'Agent knowledge of this player', before: 'Starts fresh every session', after: 'Reads full history before every response' },
+      { label: 'Drill recommendations', before: 'No tracking — forgotten', after: 'Recorded, evaluated, and closed-loop' },
+      { label: 'Language barrier', before: 'English-only coaching tools', after: 'Player speaks — AI responds in kind' },
+      { label: 'Coaching quality at 10pm', before: 'No access to a coach', after: 'Full session with personal context' },
+    ],
+    architecture: 'RAG pipeline via Firebase Cloud Functions v2 (europe-west1): client sends { question, role, history[], uid } → Pinecone semantic query (llama-text-embed-v2, 1024d, topK:5) → Claude Sonnet 4.6 with system prompt + profile context + KB chunks + session history. buildProfileContext(uid) reads Firestore before every request — injects player name, age, level, position, goal, and recent drill feel trend above the conversation. Agent returns structured JSON: { answer, drill?, feel?, drill_assessment? }. extractJson() uses balanced-brace counting (not indexOf) to handle Claude trailing text. Drill writes to users/{uid}/drills/ via serverTimestamp(). Player feel reports update drill records with claudeAssessment. Session messages persist via arrayUnion to users/{uid}/sessions/. ANTHROPIC_API_KEY and PINECONE_API_KEY stored in Firebase Secret Manager — never in client or .env deployed to Functions. KB content types: standard (chunked per file), concept-block and sequence (whole file = one Pinecone vector, never split by headers). React 19 + TypeScript + Vite. Mobile-first PWA, inline styles with theme.ts.',
+    linesOfCode: 1830,
+    buildTime: '5 days (evenings only) — active development',
+  },
+  {
     id: 'timeclock',
     name: 'TimeClock GPS',
     tagline: 'GPS-verified shift tracking where every clock-in is tied to a verified device, a verified location, and a neutral witness',

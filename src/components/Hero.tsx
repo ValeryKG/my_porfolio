@@ -28,7 +28,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           fontWeight: 600,
           marginBottom: '20px',
         }}>
-          {'{ independent product developer }'}
+          {'{ independent developer }'}
         </p>
 
         {/* Title */}
@@ -115,6 +115,28 @@ export default function Hero({ onNavigate }: HeroProps) {
           </button>
         </div>
 
+        {/* CoachIQ callout */}
+        <div
+          onClick={() => onNavigate('apps')}
+          style={{
+            marginTop: '24px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '10px 18px',
+            background: 'rgba(245, 158, 11, 0.06)',
+            border: '1px solid rgba(245, 158, 11, 0.25)',
+            borderRadius: '32px',
+            cursor: 'pointer',
+          }}
+        >
+          <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block', flexShrink: 0 }} />
+          <span style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)' }}>
+            {'Now building: '}<strong style={{ color: 'var(--color-navy)' }}>CoachIQ</strong>{' — AI coaching with memory. Early testers, coaches, and partners welcome.'}
+          </span>
+          <span style={{ fontSize: '0.88rem', color: '#f59e0b', fontWeight: 600, flexShrink: 0 }}>Learn more →</span>
+        </div>
+
         {/* Stats row */}
         <div style={{
           display: 'flex',
@@ -126,7 +148,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           {[
             { value: '31 days', label: 'Largest app, evenings only' },
             { value: '6 days', label: 'Latest app, production on day 6' },
-            { value: '35 docs', label: 'Compounding knowledge system' },
+            { value: '40 docs', label: 'Compounding knowledge system' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
               <p style={{
