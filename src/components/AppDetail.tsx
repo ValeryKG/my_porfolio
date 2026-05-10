@@ -73,28 +73,30 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
             </div>
 
             <div style={{ display: 'flex', gap: '12px' }}>
-              <a
-                href={app.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  background: 'var(--color-accent)',
-                  color: '#ffffff',
-                  fontFamily: 'inherit',
-                  fontSize: '0.85rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  padding: '10px 22px',
-                  borderRadius: '6px',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                }}
-                onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.background = 'var(--color-accent-hover)'; }}
-                onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.background = 'var(--color-accent)'; }}
-              >
-                {t('appDetail.openApp')} {'→'}
-              </a>
+              {app.accessType !== 'request' && (
+                <a
+                  href={app.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: 'var(--color-accent)',
+                    color: '#ffffff',
+                    fontFamily: 'inherit',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    padding: '10px 22px',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                  }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.background = 'var(--color-accent-hover)'; }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.background = 'var(--color-accent)'; }}
+                >
+                  {t('appDetail.openApp')} {'→'}
+                </a>
+              )}
 
               {app.accessType === 'request' && (
                 <button

@@ -56,26 +56,28 @@ export default function MobileAppDetail({ app, onBack, onContact }: AppDetailPro
 
         {/* Buttons - stacked */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <a
-            href={app.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: 'var(--color-accent)',
-              color: '#ffffff',
-              fontFamily: 'inherit',
-              fontSize: '0.95rem',
-              fontWeight: 600,
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-              padding: '14px 24px',
-              borderRadius: '10px',
-              textDecoration: 'none',
-              textAlign: 'center',
-            }}
-          >
-            {t('appDetail.openApp')} →
-          </a>
+          {app.accessType !== 'request' && (
+            <a
+              href={app.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'var(--color-accent)',
+                color: '#ffffff',
+                fontFamily: 'inherit',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                padding: '14px 24px',
+                borderRadius: '10px',
+                textDecoration: 'none',
+                textAlign: 'center',
+              }}
+            >
+              {t('appDetail.openApp')} →
+            </a>
+          )}
 
           {app.accessType === 'request' && (
             <button

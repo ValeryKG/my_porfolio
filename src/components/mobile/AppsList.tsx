@@ -94,18 +94,33 @@ export default function MobileAppsList({ apps, onSelect }: AppsListProps) {
                     Live MVP
                   </span>
                 )}
-                <span style={{
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-green)',
-                  background: 'var(--color-green-dim)',
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  fontWeight: 600,
-                }}>
-                  Live
-                </span>
+                {app.status === 'in-development' ? (
+                  <span style={{
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(148, 163, 184, 0.9)',
+                    background: 'rgba(148, 163, 184, 0.1)',
+                    padding: '6px 14px',
+                    borderRadius: '20px',
+                    fontWeight: 600,
+                  }}>
+                    In Development
+                  </span>
+                ) : (
+                  <span style={{
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-green)',
+                    background: 'var(--color-green-dim)',
+                    padding: '6px 14px',
+                    borderRadius: '20px',
+                    fontWeight: 600,
+                  }}>
+                    Live
+                  </span>
+                )}
               </div>
             </div>
 
