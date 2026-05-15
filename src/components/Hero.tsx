@@ -146,8 +146,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           flexWrap: 'wrap',
         }}>
           {[
-            { value: '31 evenings', label: 'TimeClock GPS — deployed to Palo Alto Networks' },
-            { value: '85,000+', label: 'Lines of production code, solo, every app evenings only' },
+            { value: '~ 100,000+', label: 'Lines of production code, solo, every app free time only' },
             { value: '40+ ADRs', label: 'Architecture decisions recorded — every choice documented, knowledge compounds' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>

@@ -28,7 +28,7 @@ Follow `NEW-PROJECT-INTAKE.md` for the data you collected in Step 2.
 ## CRITICAL FACTS — read before writing anything about these apps
 
 **StockPilot** — in active production use by the facilities maintenance team
-at Palo Alto Networks. This must appear in every portfolio entry, CV mention,
+at CyberArc. This must appear in every portfolio entry, CV mention,
 and job application that references this app. Do not omit it.
 
 **WishBasket** — formerly called HomeBase. Rebranded. Use WishBasket everywhere.

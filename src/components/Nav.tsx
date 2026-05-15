@@ -67,6 +67,7 @@ export default function Nav({ currentView, onNavigate }: NavProps) {
           {[
             { key: 'apps', label: t('nav.apps') },
             { key: 'basketball', label: t('nav.basketball') },
+            { key: 'build', label: t('nav.build') },
             { key: 'contact', label: t('nav.contact') },
           ].map((item) => (
             <button

@@ -20,7 +20,7 @@ Heavy development week across two apps (StockPilot, WishBasket) plus a significa
 
 ## App-by-App Changes
 
-### StockPilot (Inventory Management — Palo Alto Networks)
+### StockPilot (Inventory Management — CyberArc)
 **What a reader would notice changed:**
 - Tickets system shipped — maintenance issue tracking with full lifecycle: open → in progress → escalated → resolved. Every status change auto-logs to an immutable timeline — no manual history needed, the audit trail builds itself.
 - Asset inspection system — one-tap check-in and service logging for physical assets. Tracks last inspection date and who did it.
@@ -33,13 +33,13 @@ Heavy development week across two apps (StockPilot, WishBasket) plus a significa
 
 **Line count:** Was ~10,258. Significant new feature area added this week — actual count needs refresh (estimate 11,500+).
 
-**In production:** Palo Alto Networks facilities maintenance team, active daily use.
+**In production:** CyberArc facilities maintenance team, active daily use.
 
 **CV/LinkedIn impact:**
 - Update feature list: add "Maintenance ticket system with immutable audit trail and PDF export"
 - Add: "Asset inspection logging — one-tap check-in with service history"
 - Update line count if shown
-- The Palo Alto Networks production use is the strongest credibility signal — make sure it's prominent
+- The CyberArc production use is the strongest credibility signal — make sure it's prominent
 
 ---
 
@@ -80,7 +80,7 @@ Heavy development week across two apps (StockPilot, WishBasket) plus a significa
 
 **What changed this week:**
 - Hero statement rewritten: "18,600 lines. 7 user roles. 5 GPS modes. 31 days." → "Six apps. Real users. Zero demos." — the old version led with vanity metrics, the new one leads with the only thing that matters.
-- Stats panels rebuilt across all 6 apps: removed Lines of Code and Build Time from every entry; replaced with outcome-based signals (collection rate improvements, "Palo Alto Networks facilities team", "Immutable — Firestore rule-enforced", "Free forever — no premium tier", etc.)
+- Stats panels rebuilt across all 6 apps: removed Lines of Code and Build Time from every entry; replaced with outcome-based signals (collection rate improvements, "CyberArc facilities team", "Immutable — Firestore rule-enforced", "Free forever — no premium tier", etc.)
 - SystemSection: added 4th card "Builds that stay maintainable" — documenting the cross-project knowledge system.
 - StockPilot screenshots updated — now shows the ticket system and real production inventory with asset photos.
 - All app status badges changed to "Live" — previously split between Live and Live — Internal, which misrepresented apps that are multi-tenant SaaS platforms.
@@ -144,7 +144,7 @@ Grew from 24 → 38 documented patterns this week. New docs added:
 
 ## Recommended LinkedIn Updates (Specific)
 
-1. **Experience entry headline** — if it mentions specific numbers (lines, apps), update to reflect 6 production apps, real enterprise use (Palo Alto Networks)
+1. **Experience entry headline** — if it mentions specific numbers (lines, apps), update to reflect 6 production apps, real enterprise use (CyberArc)
 2. **StockPilot description** — add ticket system and asset inspection
 3. **TimeClock GPS description** — reposition as multi-tenant SaaS, not internal tool
 4. **Featured section** — if portfolio is linked, the URL and screenshot may need refreshing

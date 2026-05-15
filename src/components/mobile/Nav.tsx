@@ -128,6 +128,7 @@ export default function MobileNav({ currentView, onNavigate }: NavProps) {
             { key: 'home', label: 'Home' },
             { key: 'apps', label: t('nav.apps') },
             { key: 'basketball', label: t('nav.basketball') },
+            { key: 'build', label: t('nav.build') },
             { key: 'contact', label: t('nav.contact') },
           ].map((item) => (
             <button

@@ -33,7 +33,7 @@ export const apps: Project[] = [
     tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Auth', 'Firestore', 'Cloud Functions v2', 'Pinecone', 'Anthropic Claude Sonnet 4.6', 'RAG', 'PWA'],
     stats: [
       { label: 'Retrieval score', value: '0.33 → 0.83 after model switch + query rewriting' },
-      { label: 'KB documents', value: '61 structured across 3 content types' },
+      { label: 'KB documents', value: '86 structured across 3 content types' },
       { label: 'Embedding model', value: 'multilingual-e5-large, 1024d — Frankfurt' },
       { label: 'Query rewriting', value: 'Rules-based — zero cost, zero latency' },
       { label: 'Languages', value: 'Any — AI speaks the player\'s language' },
@@ -42,7 +42,7 @@ export const apps: Project[] = [
     problem:
       'Generic AI chatbots know basketball in general. They give the same answer to every player. They forget what was said last session. They have no idea what a specific player worked on, what felt hard, or what their actual development history looks like. Any chatbot can answer a basketball question — none of them coach a specific person.\n\nBuilding a RAG system that actually retrieves the right content is harder than it looks. Semantic embedding search fails on conversational language — "I fancy working on finishing moves today" is far from "Euro step 1.12 PPP effectiveness" in vector space. The wrong embedding model returns 0.33 similarity scores and wrong-category content. The agent answers confidently from that noise.',
     solution:
-      'Before every response, the agent rewrites the player\'s message into basketball analytical vocabulary before it hits the vector DB. It retrieves from a proprietary knowledge base — 61 documents authored with strict retrieval contracts, a 350-word ceiling driven by the embedding model\'s token limit, and three content types with different delivery behaviors. A score threshold drops low-quality hits before they reach Claude. The agent reads the player\'s real Firestore data: profile, recent drills, feel ratings, active sequence state. It responds in the player\'s language. After each session, it updates the record. The next session it knows more.',
+      'Before every response, the agent rewrites the player\'s message into basketball analytical vocabulary before it hits the vector DB. It retrieves from a proprietary knowledge base — 86 documents authored with strict retrieval contracts, a 350-word ceiling driven by the embedding model\'s token limit, and three content types with different delivery behaviors. A score threshold drops low-quality hits before they reach Claude. The agent reads the player\'s real Firestore data: profile, recent drills, feel ratings, skill progression, active sequence state. It responds in the player\'s language. After each session, it updates the record. The next session it knows more.',
     features: [
       { title: 'Query Rewriting Layer — The Hard Part', description: 'Semantic embedding search fails on conversational language. "I fancy working on finishing moves today" produces a vector that is far from "Euro step 1.12 PPP effectiveness" in the 1024-dimensional space. The pipeline rewrites the raw message into basketball analytical vocabulary before hitting Pinecone — rules-based, zero API cost, deterministic. Concept extraction across 10 basketball domains, position abbreviation mapping (SG → "shooting guard finishing shooting"), effectiveness signal appended for recommendation questions. Took 20+ hours of testing and hundreds of queries to get right.' },
       { title: 'Embedding Model Selection — 0.33 → 0.83', description: 'First embedding model (llama-text-embed-v2) returned 0.33 similarity scores — wrong-category content, misleading retrieval. Switched to multilingual-e5-large (1024d). Same queries jumped to 0.83+. A score threshold now drops anything below 0.75 before it reaches Claude — the agent receives correct content or nothing. The difference between 0.33 and 0.83 is the difference between a confused agent and a useful one.' },
@@ -50,20 +50,22 @@ export const apps: Project[] = [
       { title: 'Profile Injection + Sequence State Tracking', description: 'buildProfileContext(uid) reads Firestore before every request — player name, age, level, position, goal, recent drills, feel trend, and active sequence state. The feel trend is computed in deterministic code (easy vs hard drill counts → natural-language directive) — Claude gets the conclusion, not raw data to reason about. Active sequence (name, last step delivered) is injected as a direct instruction: "Continue from Step 3." Written back to Firestore after each sequence response. Topic-switch detection clears the sequence if the player moves to a different skill category.' },
       { title: 'Dynamic topK + Score Threshold', description: 'Single-concept questions get topK=3 (focused chunks, less compression on the 600-token output budget). Multi-concept or data questions get topK=5. Score threshold 0.75 drops low-quality hits — below this means no relevant KB content exists. Claude falls back to general basketball mechanics rather than receiving wrong-category context that it might present as authoritative.' },
       { title: 'Structured JSON Output Enabling Side Effects', description: 'The agent returns { answer, drill?, feel?, drill_assessment? } — not plain text. The Cloud Function parses this with a balanced-brace counter (handles Claude trailing text that breaks indexOf-based parsers). Drill writes to users/{uid}/drills/ silently. Player feel reports update the same record with claudeAssessment. Sequence state writes to users/{uid}/currentSequence. The player sees a coaching response; Firestore gets three separate structured writes. All in one call.' },
+      { title: 'Skill Progression System — I/R/M inside the conversation', description: '75 specific skills across 9 areas tracked at three stages: Introduce (learning at training), Refine (competent at training), Master (executes in games). Stages are filtered to a development level derived from the player\'s age and competition level — a 12-year-old and a 30-year-old recreational player get different skill maps. The agent writes stage advances via the same structured JSON output used for profile updates. When a player reports drill feel, the Cloud Function records it against active skills in the same area and recalculates advancement readiness. The Progress tab shows a 3-segment visual bar per skill. Coach evaluation tool (planned): coach marks all skills on day 1, agent starts with full context instead of discovering it over weeks.' },
       { title: 'Constraint Stacking in Agent Behavior', description: 'The agent identifies every constraint the player has stated — physical, equipment, environment, partner availability — and holds all of them simultaneously for the entire session. Sore knee + no partner + 10 minutes → the agent finds a drill that satisfies all three simultaneously, not the one that avoids two while loading the third. Physical limitations stay active until the player explicitly lifts them. Position stated once locks every drill and move recommendation for the session.' },
       { title: 'Multilingual by Architecture', description: 'The knowledge base is English only. The multilingual-e5-large embedding model matches Hebrew, Russian, or any language query to the correct English content. Claude responds in the player\'s language from their profile. One knowledge base, any language, zero translation needed.' },
     ],
     metrics: [
       { label: 'Pinecone retrieval score', before: '0.33 — wrong-category content', after: '0.83+ — correct methodology retrieved' },
-      { label: 'KB documents in index', before: '23 documents (pre-restructure)', after: '61 structured documents — 3 content types' },
+      { label: 'KB documents in index', before: '23 documents (pre-restructure)', after: '86 structured documents — 3 content types' },
       { label: 'Wrong-category content reaching Claude', before: 'Every query — no filter', after: 'Zero — score threshold 0.75 blocks it' },
       { label: 'Conversational query hitting VDB directly', before: '"I fancy finishing moves today" → noise', after: 'Rewritten to "finishing moves" before Pinecone' },
       { label: 'Agent knowledge of this player', before: 'Starts fresh every session', after: 'Reads full history before every response' },
+      { label: 'Skill progression tracking', before: 'Not tracked', after: '75 skills at I/R/M stages — updated automatically from session data' },
       { label: 'Sequence step tracking', before: 'Claude inferred from history — unreliable', after: 'Explicit state in Firestore — injected as instruction' },
     ],
-    architecture: 'RAG pipeline via Firebase Cloud Functions v2 (europe-west1): client sends { question, role, history[], uid } → rewriteQuery() extracts basketball concept keywords and rewrites conversational input into analytical VDB vocabulary → Pinecone semantic search (multilingual-e5-large, 1024d, dynamic topK 3–5) → score threshold 0.75 drops low-quality hits → Claude Sonnet 4.6 with system prompt + profile context + KB chunks + session history. buildProfileContext(uid) reads users/{uid} and users/{uid}/drills in parallel — assembles name, age, level, position, goal, feel trend (computed deterministically from easy/hard drill counts), and active sequence state (name + last step). Profile injected above the system prompt. Agent returns structured JSON: { answer, drill?, feel?, drill_assessment? }. extractJson() uses balanced-brace counting — handles Claude trailing text that breaks indexOf parsers. Drill writes to users/{uid}/drills/, sequence state to users/{uid}/currentSequence, session messages via arrayUnion to users/{uid}/sessions/. ANTHROPIC_API_KEY and PINECONE_API_KEY in Firebase Secret Manager. KB authoring: standard ≤350 words (e5-large 507-token ceiling — silent tail truncation above it), concept-block and sequence files never split by headers (one file = one Pinecone vector). React 19 + TypeScript + Vite. Mobile-first, inline styles with theme.ts.',
-    linesOfCode: 2100,
-    buildTime: '11 sessions (evenings only) — 20+ hours on RAG optimization alone — active development',
+    architecture: 'RAG pipeline via Firebase Cloud Functions v2 (europe-west1): client sends { question, role, history[], uid } → rewriteQuery() extracts basketball concept keywords and rewrites conversational input into analytical VDB vocabulary → Pinecone semantic search (multilingual-e5-large, 1024d, dynamic topK 3–5) → score threshold 0.75 drops low-quality hits → Claude Sonnet 4.6 with system prompt + profile context + KB chunks + session history. buildProfileContext(uid) reads users/{uid}, users/{uid}/drills, and users/{uid}/skillProgression in parallel — assembles name, age, level, position, goal, feel trend, active sequence state, and current skill stages (I/R/M). Profile injected above the system prompt. Agent returns structured JSON: { answer, drill?, feel?, drill_assessment?, profile_update? }. profile_update.skillProgression: { skillId: stage } writes directly to skillProgression subcollection. Feel responses trigger Cloud Function to record feel against active skills in the same area and recalculate advanceReady flag. Skill stages filtered to player development level derived from age + competition level (beginner / intermediate / advanced / elite). extractJson() uses balanced-brace counting. Drill writes to users/{uid}/drills/, sequence state to users/{uid}/currentSequence, session messages via arrayUnion to users/{uid}/sessions/. ANTHROPIC_API_KEY and PINECONE_API_KEY in Firebase Secret Manager. KB authoring: standard ≤350 words (e5-large 507-token ceiling — silent tail truncation above it), concept-block and sequence files never split by headers. React 19 + TypeScript + Vite. Mobile-first, inline styles with theme.ts.',
+    linesOfCode: 2800,
+    buildTime: '15 sessions — 20+ hours on RAG optimization alone — active development',
   },
   {
     id: 'timeclock',
@@ -105,7 +107,7 @@ export const apps: Project[] = [
     ],
     architecture: 'React 19 SPA with Context-based state management. Firestore real-time listeners (onSnapshot) across 5 collections. Custom PIN auth with bcrypt — no Firebase Auth used; device token (UUID v4) stored in IndexedDB for persistent device identity across sessions. PWA with auto-update via version.json polling. Role-based route protection via ProtectedRoute — validates device approval status on every navigation. jsPDF + xlsx for role-specific exports with i18next-translated headers.',
     linesOfCode: 18639,
-    buildTime: '31 days (evenings only)',
+    buildTime: '31 days',
     screenshots: [
       { file: '/gps_PIN_screen.jpg', caption: 'Secure PIN entry — 4 languages, works on any device' },
       { file: '/gps_manager_live_status.jpg', caption: 'Manager sees who is clocked in right now, in real time' },
@@ -150,7 +152,7 @@ export const apps: Project[] = [
     ],
     architecture: 'React 19 SPA. Firebase Firestore with IndexedDB offline persistence — reads from cache, writes queue and sync on reconnect. Immutability enforced at the security rule level: update and delete are blocked on /logs. Request & Promise outcomes tracked in a separate /promiseLogs collection (outcome: kept | declined) — decoupled from the main inventory log. Custom statuses stored on the org doc as a CustomStatus[] array; ItemStatus typed as string so built-in and custom statuses flow through the same components without special-casing. Role access via allowedFolders[] on the user doc, filtered once at the folder tree — no per-item queries as inventory scales. Google OAuth + email/password. i18next with document.documentElement.dir for Hebrew RTL.',
     linesOfCode: 9100,
-    buildTime: '~2 weeks (evenings only)',
+    buildTime: '~2 weeks',
     screenshots: [
       { file: '/Wishbasket_a.png', caption: 'Inventory tab — items with food images, quantity controls, and status badges' },
       { file: '/Wishbasket_b.png', caption: 'Global search across all folders — filtered by status or personal folder' },
@@ -164,17 +166,17 @@ export const apps: Project[] = [
     name: 'StockPilot',
     tagline: 'Inventory tracking with an audit trail nobody can edit',
     description:
-      'Multi-tenant PWA for facilities and maintenance teams. Tracks consumables and physical assets across any org structure — folders by floor, room, warehouse, or department. Every stock change is atomic and permanent: who changed it, when, how much, why. In active use by the facilities maintenance team at Palo Alto Networks.',
+      'Multi-tenant PWA for facilities and maintenance teams. Tracks consumables and physical assets across any org structure — folders by floor, room, warehouse, or department. Every stock change is atomic and permanent: who changed it, when, how much, why. In active use by the facilities maintenance team at CyberArc.',
     url: 'https://inventory-e5daa.web.app/',
     accessType: 'request',
-    accessNote: 'Live app in active use by the facilities maintenance team at Palo Alto Networks — contact for access credentials',
+    accessNote: 'Live app in active use by the facilities maintenance team at CyberArc — contact for access credentials',
     status: 'production',
     tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Firebase Auth', 'Firebase Storage', 'Recharts', 'jsPDF', 'xlsx', 'dnd-kit', 'Zustand', 'PWA'],
     stats: [
       { label: 'Audit log', value: 'Immutable — Firestore rule-enforced' },
       { label: 'Stock updates', value: 'Atomic — quantity + log or neither' },
       { label: 'Item types', value: 'Consumables + assets (one system)' },
-      { label: 'In production', value: 'Palo Alto Networks — facilities team, daily active use' },
+      { label: 'In production', value: 'CyberArc — facilities team, daily active use' },
       { label: 'Audit guarantee', value: 'Every stock change permanent — who, when, how much, why' },
       { label: 'Consumption analytics', value: 'Monthly charts + reorder suggestions' },
     ],
@@ -201,9 +203,9 @@ export const apps: Project[] = [
     ],
     architecture: 'React 19 SPA. Firestore with onSnapshot real-time listeners across 4 collections. writeBatch for atomic stock updates — quantity change and immutable log entry written together or not at all. Firestore security rules enforce: (1) logs are append-only, update/delete blocked; (2) every document scoped to orgId, enforced server-side. Folder visibility filtered once at the folder tree via allowedFolders[] on the user doc — no per-item permission checks as inventory scales. Google OAuth + email/password via Firebase Auth. Zustand for auth state. jsPDF + jspdf-autotable for PDF, xlsx for Excel. dnd-kit for folder drag-and-drop. PWA with auto-update via version.json polling.',
     linesOfCode: 10258,
-    buildTime: '~3 weeks (evenings only)',
+    buildTime: '~3 weeks',
     screenshots: [
-      { file: '/inventory_b.png', caption: 'Folder tree — real org structure at Palo Alto Networks, nested by location with item counts' },
+      { file: '/inventory_b.png', caption: 'Folder tree — real org structure at CyberArc, nested by location with item counts' },
       { file: '/inventory_f.png', caption: 'Stock update modal — current quantity, delta or exact, monthly consumption chart, and reorder suggestion in one screen' },
       { file: '/inventory_j.png', caption: 'Item list — real inventory in production use, asset photos, status badges, and last-updated timestamps' },
       { file: '/inventory_g.png', caption: 'Ticket system — 31 maintenance issues tracked by status: open, in progress, escalated, resolved' },
@@ -248,7 +250,7 @@ export const apps: Project[] = [
     ],
     architecture: 'Multi-tenant SaaS with dual-org model — every coach holds a personal workspace (personalOrgId) and optionally joins a club org (orgId), keeping private and club work fully separated. Firestore subcollections per org enforce data isolation. scoutingHistory subcollection stores timestamped skill snapshots with private/public note split. Skill lists shared via writeBatch across users/{uid}/skillLists and organizations/{orgId}/skillLists. 176-skill/drill global library with PPP/impact/teachability metadata and isDrill filter. PDF parsing pipeline extracts skill names into named lists. 3-tier resource sharing (org / personal / community) with soft ban (bannedFromSharing) and hard ban (accountDisabled) enforced at auth layer. Schedule with Firestore event CRUD, RSVP, venue docs, and template system. PWA with manifest, icons, and apple-touch-icon. Recharts-powered progress tracking across all 3 dashboards. Legal pages (/terms + /privacy) with required consent stored in user doc. React 18 + TypeScript + Vite, deployed on Firebase Hosting.',
     linesOfCode: 20000,
-    buildTime: '~6 weeks (evenings only)',
+    buildTime: '~6 weeks',
     screenshots: [
       { file: '/courtIq_a.jpg', caption: 'Player dashboard — assigned workouts, progress tracking, scouting reports' },
       { file: '/courtIq_b.jpg', caption: 'Session view — defensive skill list with coach observation logging' },
@@ -293,7 +295,7 @@ export const apps: Project[] = [
     ],
     architecture: 'React 18 SPA. 6 custom hooks encapsulate all data logic (useAuth, useTimeLogs, useWorkPlaces, useGeolocation, usePWA). Firebase Firestore with real-time onSnapshot. IndexedDB for offline action queue with automatic sync. Service worker with cache-first strategy for app shell.',
     linesOfCode: 5700,
-    buildTime: '<2 weeks (evenings only)',
+    buildTime: '<2 weeks',
     screenshots: [
       { file: '/myHours_a.jpg', caption: 'GPS timestamps prove where and when you worked — free, 4 languages' },
       { file: '/myHours_b.jpg', caption: 'Time logs across multiple workplaces with full history' },
@@ -340,7 +342,7 @@ export const apps: Project[] = [
     ],
     architecture: 'Multi-tenant SaaS. Firebase Realtime Database with role-based security rules — building data access enforced server-side, no workaround possible at the application layer. Cloud Functions handle automated notifications and user management server-side in each resident\'s language. PWA with service worker for offline support. No build step — files served directly via Firebase Hosting.',
     linesOfCode: 22000,
-    buildTime: '~2 months (evenings only)',
+    buildTime: '~2 months',
     screenshots: [
       { file: '/baiti_resident_tutorial.jpg', caption: 'Hebrew, English, Russian — residents use the app in their own language' },
       { file: '/baiti_building_budget.jpg', caption: 'Building budget tracking with income, expenses, and live balance' },
