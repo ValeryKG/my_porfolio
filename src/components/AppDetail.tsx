@@ -280,6 +280,41 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
           </div>
         </div>
 
+        {/* Leverage — AI vs traditional build cost */}
+        {app.leverage && (
+          <div style={{ marginBottom: '64px' }}>
+            <p style={{ fontSize: '0.85rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '8px' }}>
+              The Work
+            </p>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 300, color: 'var(--color-navy)', marginBottom: '28px' }}>
+              What this would cost without AI.
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '20px' }}>
+              <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '12px', padding: '28px' }}>
+                <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#991b1b', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 16px' }}>Without AI</p>
+                {app.leverage.without.map(item => (
+                  <div key={item} style={{ display: 'flex', gap: '12px', marginBottom: '10px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#dc2626', fontWeight: 700, flexShrink: 0 }}>×</span>
+                    <span style={{ color: '#7f1d1d', fontSize: '0.88rem', lineHeight: 1.5 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '28px' }}>
+                <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#166534', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 16px' }}>What it actually took</p>
+                {app.leverage.with.map(item => (
+                  <div key={item} style={{ display: 'flex', gap: '12px', marginBottom: '10px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#16a34a', fontWeight: 700, flexShrink: 0 }}>✓</span>
+                    <span style={{ color: '#14532d', fontSize: '0.88rem', lineHeight: 1.5 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', borderRadius: '10px', padding: '20px 24px' }}>
+              <p style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'var(--color-text)', margin: 0 }}>{app.leverage.note}</p>
+            </div>
+          </div>
+        )}
+
         {/* Architecture + Tech */}
         <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '32px' }}>
           <div style={{ background: 'var(--color-bg-alt)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '32px' }}>
