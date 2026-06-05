@@ -6,9 +6,11 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Six production apps. Real problems identified. Real people using them daily.",
-    "subtitle": "One person. Every idea, every decision, every product — mine.",
-    "viewApps": "View Applications",
+    "title": "The hard problem is never the visible feature.",
+    "body1": "I design the architecture, build the product, and ship it.",
+    "body2": "Seven applications in production — GPS attendance that ends payroll disputes, AI that knows individual players, inventory with audit trails nobody can edit, household coordination that doesn't route everything through one person.",
+    "body3": "Real companies. Real users. One builder.",
+    "viewApps": "See the work",
     "viewBasketball": "Basketball Project"
   },
   "apps": {

@@ -18,7 +18,7 @@ export default function SystemSection() {
     {
       number: '04',
       title: 'Builds that stay maintainable',
-      body: 'Most codebases become expensive to change after 6 months. Every decision here is documented — what the problem was, what was tried, what was chosen and why. A year later, opening any project takes minutes not days. The context was never lost because it was never only in someone\'s head.',
+      body: 'Most codebases become expensive to change after 6 months. That doesn\'t happen here — not because of discipline alone, but because context is never stored only in someone\'s head. Every project can be reopened a year later in minutes.',
     },
   ];
 

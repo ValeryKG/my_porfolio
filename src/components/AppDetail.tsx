@@ -159,7 +159,7 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
         {/* Stats */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
           gap: '16px',
           marginBottom: '64px',
         }}>
@@ -168,11 +168,10 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
               background: 'var(--color-bg-alt)',
               border: '1px solid var(--color-border)',
               borderRadius: '10px',
-              padding: '20px 16px',
-              textAlign: 'center',
+              padding: '18px 20px',
             }}>
-              <p style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-navy)', marginBottom: '4px' }}>{stat.value}</p>
-              <p style={{ fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>{stat.label}</p>
+              <p style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '6px' }}>{stat.label}</p>
+              <p style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--color-navy)', lineHeight: 1.5 }}>{stat.value}</p>
             </div>
           ))}
         </div>

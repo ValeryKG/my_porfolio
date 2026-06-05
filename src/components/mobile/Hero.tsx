@@ -43,15 +43,34 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           {t('hero.title')}
         </h1>
 
-        {/* Subtitle */}
+        {/* Body */}
         <p style={{
           fontSize: '1.05rem',
           color: 'var(--color-text-muted)',
           lineHeight: 1.7,
+          marginBottom: '10px',
+          padding: '0 8px',
+        }}>
+          {t('hero.body1')}
+        </p>
+        <p style={{
+          fontSize: '1.05rem',
+          color: 'var(--color-text-muted)',
+          lineHeight: 1.7,
+          marginBottom: '10px',
+          padding: '0 8px',
+        }}>
+          {t('hero.body2')}
+        </p>
+        <p style={{
+          fontSize: '1.05rem',
+          fontWeight: 600,
+          color: 'var(--color-navy)',
+          lineHeight: 1.7,
           marginBottom: '32px',
           padding: '0 8px',
         }}>
-          {t('hero.subtitle')}
+          {t('hero.body3')}
         </p>
 
         {/* Buttons - Stacked on mobile */}
@@ -77,7 +96,7 @@ export default function MobileHero({ onNavigate }: HeroProps) {
           </button>
 
           <button
-            onClick={() => onNavigate('basketball')}
+            onClick={() => onNavigate('contact')}
             style={{
               background: 'var(--color-bg)',
               color: 'var(--color-navy)',
@@ -92,15 +111,14 @@ export default function MobileHero({ onNavigate }: HeroProps) {
               cursor: 'pointer',
             }}
           >
-            {t('hero.viewBasketball')}
+            Get in touch
           </button>
         </div>
 
         {/* CoachIQ callout */}
         <div
-          onClick={() => onNavigate('apps')}
+          onClick={() => onNavigate('coachiq')}
           style={{
-            marginTop: '20px',
             display: 'flex',
             alignItems: 'flex-start',
             gap: '10px',
@@ -115,43 +133,9 @@ export default function MobileHero({ onNavigate }: HeroProps) {
         >
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block', flexShrink: 0, marginTop: '5px' }} />
           <span style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
-            {'Now building: '}<strong style={{ color: 'var(--color-navy)' }}>CoachIQ</strong>{' — AI coaching with memory. Early testers, coaches, and partners welcome. '}
-            <span style={{ color: '#f59e0b', fontWeight: 600 }}>Learn more →</span>
+            <strong style={{ color: 'var(--color-navy)' }}>CoachIQ</strong>{' is live — AI basketball coaching with player memory. '}
+            <span style={{ color: '#f59e0b', fontWeight: 600 }}>coach-iq.org →</span>
           </span>
-        </div>
-
-        {/* Stats - horizontal scroll on mobile */}
-        <div style={{
-          display: 'flex',
-          gap: '24px',
-          justifyContent: 'center',
-          marginTop: '48px',
-          flexWrap: 'wrap',
-        }}>
-          {[
-            { value: '31 days', label: 'Largest app' },
-            { value: '6 days', label: 'Latest app' },
-            { value: '40 docs', label: 'Methodology' },
-          ].map((stat) => (
-            <div key={stat.label} style={{ textAlign: 'center', minWidth: '80px' }}>
-              <p style={{
-                fontSize: '2rem',
-                fontWeight: 700,
-                color: 'var(--color-navy)',
-                marginBottom: '4px',
-              }}>
-                {stat.value}
-              </p>
-              <p style={{
-                fontSize: '0.8rem',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-              }}>
-                {stat.label}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </div>

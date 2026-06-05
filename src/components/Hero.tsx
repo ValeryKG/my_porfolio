@@ -43,16 +43,34 @@ export default function Hero({ onNavigate }: HeroProps) {
           {t('hero.title')}
         </h1>
 
-        {/* Subtitle */}
+        {/* Body */}
         <p style={{
           fontSize: '1rem',
           color: 'var(--color-text-muted)',
           lineHeight: 1.7,
-          marginBottom: '40px',
+          maxWidth: '560px',
+          margin: '0 auto 12px',
+        }}>
+          {t('hero.body1')}
+        </p>
+        <p style={{
+          fontSize: '1rem',
+          color: 'var(--color-text-muted)',
+          lineHeight: 1.7,
+          maxWidth: '640px',
+          margin: '0 auto 12px',
+        }}>
+          {t('hero.body2')}
+        </p>
+        <p style={{
+          fontSize: '1rem',
+          fontWeight: 600,
+          color: 'var(--color-navy)',
+          lineHeight: 1.7,
           maxWidth: '560px',
           margin: '0 auto 40px',
         }}>
-          {t('hero.subtitle')}
+          {t('hero.body3')}
         </p>
 
         {/* Buttons */}
@@ -87,7 +105,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           </button>
 
           <button
-            onClick={() => onNavigate('basketball')}
+            onClick={() => onNavigate('contact')}
             style={{
               background: 'var(--color-bg)',
               color: 'var(--color-navy)',
@@ -111,13 +129,13 @@ export default function Hero({ onNavigate }: HeroProps) {
               (e.target as HTMLButtonElement).style.color = 'var(--color-navy)';
             }}
           >
-            {t('hero.viewBasketball')}
+            Get in touch
           </button>
         </div>
 
         {/* CoachIQ callout */}
         <div
-          onClick={() => onNavigate('apps')}
+          onClick={() => onNavigate('coachiq')}
           style={{
             marginTop: '24px',
             display: 'inline-flex',
@@ -132,42 +150,9 @@ export default function Hero({ onNavigate }: HeroProps) {
         >
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block', flexShrink: 0 }} />
           <span style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)' }}>
-            {'Now building: '}<strong style={{ color: 'var(--color-navy)' }}>CoachIQ</strong>{' — AI coaching with memory. Early testers, coaches, and partners welcome.'}
+            <strong style={{ color: 'var(--color-navy)' }}>CoachIQ</strong>{' is live — AI basketball coaching with player memory.'}
           </span>
-          <span style={{ fontSize: '0.88rem', color: '#f59e0b', fontWeight: 600, flexShrink: 0 }}>Learn more →</span>
-        </div>
-
-        {/* Stats row */}
-        <div style={{
-          display: 'flex',
-          gap: '48px',
-          justifyContent: 'center',
-          marginTop: '72px',
-          flexWrap: 'wrap',
-        }}>
-          {[
-            { value: '~ 100,000+', label: 'Lines of production code, solo, every app free time only' },
-            { value: '40+ ADRs', label: 'Architecture decisions recorded — every choice documented, knowledge compounds' },
-          ].map((stat) => (
-            <div key={stat.label} style={{ textAlign: 'center' }}>
-              <p style={{
-                fontSize: '1.8rem',
-                fontWeight: 700,
-                color: 'var(--color-navy)',
-                marginBottom: '4px',
-              }}>
-                {stat.value}
-              </p>
-              <p style={{
-                fontSize: '0.85rem',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-              }}>
-                {stat.label}
-              </p>
-            </div>
-          ))}
+          <span style={{ fontSize: '0.88rem', color: '#f59e0b', fontWeight: 600, flexShrink: 0 }}>coach-iq.org →</span>
         </div>
       </div>
     </div>

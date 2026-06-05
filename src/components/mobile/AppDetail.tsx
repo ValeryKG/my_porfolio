@@ -133,26 +133,25 @@ export default function MobileAppDetail({ app, onBack, onContact }: AppDetailPro
           <ScreenshotCarousel key={app.id} screenshots={app.screenshots} isMobile />
         )}
 
-        {/* Stats - 2 column grid */}
+        {/* Stats */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '12px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
           marginBottom: '32px',
         }}>
-          {app.stats.slice(0, 4).map((stat) => (
+          {app.stats.map((stat) => (
             <div key={stat.label} style={{
               background: 'var(--color-bg-alt)',
               border: '1px solid var(--color-border)',
               borderRadius: '12px',
-              padding: '16px',
-              textAlign: 'center',
+              padding: '14px 16px',
             }}>
-              <p style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-navy)', marginBottom: '4px' }}>
-                {stat.value}
-              </p>
-              <p style={{ fontSize: '0.75rem', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
+              <p style={{ fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: '4px' }}>
                 {stat.label}
+              </p>
+              <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-navy)', lineHeight: 1.5 }}>
+                {stat.value}
               </p>
             </div>
           ))}
