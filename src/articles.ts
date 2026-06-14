@@ -142,8 +142,8 @@ export const articles: Article[] = [
     series: 'CoachIQ',
     seriesColor: 'var(--color-accent)',
     title: 'The Card That Lied',
-    date: '2026-06-11',
-    published: false,
+    date: '2026-06-14',
+    published: true,
     excerpt: 'The app was ready to take money.',
     content: [
       'The app was ready to take money.',
