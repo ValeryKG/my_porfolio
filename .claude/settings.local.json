@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Valery\\\\Documents\\\\Basketball\" -Directory)",
-      "Bash(Select-Object Name)"
+      "Bash(Select-Object Name)",
+      "PowerShell(ls -Recurse \"C:\\\\Users\\\\Valery\\\\Documents\\\\HeadOfSalesAgent\\\\\" -File | Where-Object { $_.Extension -in @\\('.tsx', '.ts', '.jsx', '.js'\\) -and $_.FullName -notmatch 'node_modules' -and $_.FullName -notmatch 'dist' } | Select-Object FullName)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Valery\\\\Documents\\\\HeadOfSalesAgent\\\\specs\\\\\" | ForEach-Object { $_.Name })",
+      "Bash(type \"C:\\\\Users\\\\Valery\\\\Documents\\\\headofsales\\\\.firebaserc\")",
+      "Bash(type \"C:\\\\Users\\\\Valery\\\\Documents\\\\HeadOfSales\\\\.firebaserc\")",
+      "Bash(type \"C:\\\\Users\\\\Valery\\\\Documents\\\\head-of-sales\\\\.firebaserc\")",
+      "Bash(dir \"C:\\\\Users\\\\Valery\\\\Documents\\\\\" /b)"
     ]
   }
 }

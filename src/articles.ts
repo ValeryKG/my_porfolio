@@ -168,7 +168,7 @@ export const articles: Article[] = [
     seriesColor: 'var(--color-accent)',
     title: 'The Number That Does Damage',
     date: '2026-06-18',
-    published: false,
+    published: true,
     excerpt: 'I found the bug before any real user did.',
     content: [
       'I found the bug before any real user did.',
@@ -190,7 +190,7 @@ export const articles: Article[] = [
     seriesColor: 'var(--color-accent)',
     title: 'The Person I Forgot',
     date: '2026-06-25',
-    published: false,
+    published: true,
     excerpt: 'It was a late evening, somewhere in the middle of a testing session.',
     content: [
       'It was a late evening, somewhere in the middle of a testing session.',
