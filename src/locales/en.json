@@ -36,7 +36,8 @@
     "openApp": "Open App",
     "requestAccess": "Request Access",
     "builtWith": "Built with AI",
-    "builtWithDesc": "AI-assisted development — architecture and business logic by the developer, syntax and patterns by Claude. Result: production apps in weeks, not months."
+    "builtWithDesc": "AI-assisted development — architecture and business logic by the developer, syntax and patterns by Claude. Result: production apps in weeks, not months.",
+    "relatedArticle": "Read the story behind this build"
   },
   "basketball": {
     "label": "Knowledge System",

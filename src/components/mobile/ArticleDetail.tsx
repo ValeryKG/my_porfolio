@@ -3,9 +3,10 @@ import type { Article } from '../../articles';
 interface ArticleDetailProps {
   article: Article;
   onBack: () => void;
+  onNavigate: (target: string) => void;
 }
 
-export default function MobileArticleDetail({ article, onBack }: ArticleDetailProps) {
+export default function MobileArticleDetail({ article, onBack, onNavigate }: ArticleDetailProps) {
   return (
     <div style={{ paddingTop: '56px' }}>
       {/* Hero Banner */}
@@ -75,6 +76,24 @@ export default function MobileArticleDetail({ article, onBack }: ArticleDetailPr
             {paragraph}
           </p>
         ))}
+
+        {article.relatedAppId && (
+          <button
+            onClick={() => onNavigate(article.relatedAppId!)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--color-accent)',
+              fontFamily: 'inherit',
+              fontSize: '0.95rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              padding: 0,
+            }}
+          >
+            See the live app →
+          </button>
+        )}
       </div>
     </div>
   );

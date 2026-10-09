@@ -6,9 +6,10 @@ interface AppDetailProps {
   app: Project;
   onBack: () => void;
   onContact: () => void;
+  onNavigate: (target: string) => void;
 }
 
-export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
+export default function AppDetail({ app, onBack, onContact, onNavigate }: AppDetailProps) {
   const { t } = useTranslation();
 
   return (
@@ -377,6 +378,27 @@ export default function AppDetail({ app, onBack, onContact }: AppDetailProps) {
             </p>
           </div>
         </div>
+
+        {/* Related Build Log article */}
+        {app.articleId && (
+          <button
+            onClick={() => onNavigate(app.articleId!)}
+            style={{
+              display: 'block',
+              margin: '24px auto 0',
+              background: 'none',
+              border: 'none',
+              color: 'var(--color-accent)',
+              fontFamily: 'inherit',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              padding: 0,
+            }}
+          >
+            {t('appDetail.relatedArticle')} →
+          </button>
+        )}
 
       </div>
     </div>

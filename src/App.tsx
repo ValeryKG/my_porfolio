@@ -88,6 +88,7 @@ export default function App() {
           app={currentApp}
           onBack={() => navigate('apps')}
           onContact={() => setContactOpen(true)}
+          onNavigate={navigate}
         />
       )}
 
@@ -105,6 +106,7 @@ export default function App() {
         <ArticleDetail
           article={currentArticle}
           onBack={() => navigate('build')}
+          onNavigate={navigate}
         />
       )}
 

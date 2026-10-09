@@ -7,9 +7,31 @@ export interface Article {
   published: boolean;
   excerpt: string;
   content: string[];
+  relatedAppId?: string;
 }
 
 export const articles: Article[] = [
+  {
+    id: 'fixdesk-01',
+    series: 'FixDesk',
+    seriesColor: 'var(--color-orange)',
+    title: 'The Fridge That Took Six Months',
+    date: '2026-10-10',
+    published: true,
+    excerpt: 'I asked for the most obvious metric in every help desk product on earth. Then I remembered the fridge.',
+    relatedAppId: 'fixdesk',
+    content: [
+      'I run facilities maintenance for a ten-floor office building. Before any of this, that\'s the job — not software.',
+      'We already had a ticket system. I\'d built it a year earlier, as part of a bigger inventory app. It worked, it\'s still running, still used every day — but it dragged folders and stock counts and a dozen inventory ideas along with it, none of which had anything to do with fixing a broken faucet.',
+      'So I forked it. Stripped the inventory layer out, kept the tickets, called it FixDesk. Deciding what to delete was the easy part. Deciding what the empty shell actually needed — that was the real work.',
+      'First instinct for the dashboard: track average time to resolve a ticket. Every help desk on earth measures this. Then I remembered the fridge on the fourth floor that sat broken for six months because nobody above me would approve a two-hundred-dollar technician call-out. That average would have blamed my team for someone else\'s budget decision. So we split it — what my team actually controls, and what\'s stuck waiting on someone else, visible but never styled like a red alarm. On hold isn\'t a failure. It\'s a fact.',
+      'The next thing I broke was something I\'d built myself, days earlier — a feature letting admins define custom location fields for customer requests. Seemed reasonable, until I used it like an admin actually would and watched the form ask someone reporting one broken microwave to also fill in a field for a fridge, a coffee machine, and a restroom stall, all required at once. Worked in theory. Fell apart the moment a real person tried to use it for a real problem. I pulled it out the same day.',
+      'The thing I actually care about, across both apps, isn\'t any single feature. It\'s information that normally gets lost. Someone reports a broken faucet over WhatsApp, and three days later nobody remembers which floor it was on, whether there was a photo, who even picked it up. The customer portal exists so the person with the problem supplies the facts — exact location, a photo, a way to reach them — instead of that information evaporating between a phone call and a sticky note.',
+      'And once a ticket exists, it shouldn\'t go quiet. Set how many days something can sit untouched, and past that it gets flagged and pinned to the top until someone deals with it — open, in progress, on hold, doesn\'t matter. Everyone on the team sees the same dashboard, the same numbers, at the same time. Nobody\'s out of the loop because nobody had to ask.',
+      'That\'s the vision behind both apps, not just this one: capture what usually gets lost, and don\'t let anyone — customer, staff, manager — fall out of the loop.',
+      'None of it would have been possible without both halves at once — knowing what actually goes wrong in a building, and an AI fast enough to build at the pace that knowledge demanded. A year ago this is a developer, a spec document, and weeks of explaining what a facilities team actually needs before a single screen exists. Now it\'s one person who already knows the problem, moving at a pace no team I\'ve waited on ever has. A team of one, faster than the teams.',
+    ],
+  },
   {
     id: 'coachiq-01',
     series: 'CoachIQ',
