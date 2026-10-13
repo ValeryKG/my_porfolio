@@ -35,7 +35,7 @@ export const apps: Project[] = [
     url: 'https://coach-iq.org/',
     accessType: 'public',
     accessNote: 'Live at coach-iq.org — free to start, 10 sessions, no card required',
-    status: 'live-mvp',
+    status: 'production',
     tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Auth', 'Firestore', 'Cloud Functions v2', 'React Router DOM', 'Pinecone', 'Anthropic Claude Sonnet 4.6', 'Recharts', 'Paddle', 'FCM', 'PWA'],
     stats: [
       { label: 'Exists anywhere else', value: 'Nothing like it' },
@@ -209,7 +209,7 @@ export const apps: Project[] = [
     url: 'https://fixdesk-a3e40.web.app/',
     accessType: 'public',
     accessNote: 'Get started free — self-serve signup creates your own organization',
-    status: 'live-mvp',
+    status: 'production',
     tech: ['React 19', 'TypeScript', 'Vite', 'Firebase Firestore', 'Firebase Auth', 'Firebase Storage', 'date-fns', 'PWA'],
     stats: [
       { label: 'Built on', value: 'StockPilot — forked, inventory layer removed entirely' },
