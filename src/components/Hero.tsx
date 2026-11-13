@@ -28,7 +28,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           fontWeight: 600,
           marginBottom: '20px',
         }}>
-          {'{ independent developer }'}
+          {'{ facilities professional · product builder }'}
         </p>
 
         {/* Title */}
